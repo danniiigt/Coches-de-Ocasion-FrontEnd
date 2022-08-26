@@ -14,11 +14,10 @@ import SearchIcon from "@mui/icons-material/Search";
 import DirectionsCarIcon from "@mui/icons-material/DirectionsCar";
 import StyleIcon from "@mui/icons-material/Style";
 import { useFetch } from "../../hooks/useFetch";
-import CloseIcon from "@mui/icons-material/Close";
 
 export const Search = () => {
   const { data, isLoading, hasError } = useFetch(
-    "http://localhost:8080/api/brands"
+    `${import.meta.env.VITE_RESTSERVER_URL}/api/brands`
   );
 
   const [brand, setBrand] = useState(0);
@@ -30,7 +29,14 @@ export const Search = () => {
   return (
     <>
       <SearchWrapper>
-        <Stack direction="row" spacing={0}>
+        <Stack
+          direction="row"
+          spacing={0}
+          sx={{
+            borderRadius: "5px 11px 11px 5px",
+            boxShadow: "0px 0px 2px 0px #00000060",
+          }}
+        >
           <TextField
             fullWidth
             color="primary"

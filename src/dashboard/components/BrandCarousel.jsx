@@ -5,7 +5,7 @@ import { useFetch } from "../../hooks/useFetch";
 
 export const BrandCarousel = () => {
   const { data, isLoading, hasError } = useFetch(
-    "http://localhost:8080/api/brands"
+    `${import.meta.env.VITE_RESTSERVER_URL}/api/brands`
   );
 
   return (
