@@ -1,0 +1,31 @@
+{
+  "name": "coches-de-ocasion",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.10.0",
+    "@emotion/styled": "^11.10.0",
+    "@mui/icons-material": "^5.10.2",
+    "@mui/material": "^5.10.2",
+    "@reduxjs/toolkit": "^1.8.5",
+    "@trendyol-js/react-carousel": "^3.0.0",
+    "react": "^18.2.0",
+    "react-animated-number": "^0.4.4",
+    "react-dom": "^18.2.0",
+    "react-flip-numbers": "^3.0.6",
+    "react-router-dom": "6",
+    "react-slick": "^0.29.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.17",
+    "@types/react-dom": "^18.0.6",
+    "@vitejs/plugin-react": "^2.0.1",
+    "vite": "^3.0.7"
+  }
+}
