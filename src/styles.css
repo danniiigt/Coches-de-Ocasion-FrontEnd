@@ -23,11 +23,6 @@ li {
   );
 }
 
-img {
-  max-height: 256px;
-  max-width: 256px;
-}
-
 input {
   outline: none;
 }

@@ -26,6 +26,7 @@ export const BrandCarousel = () => {
         {!isLoading &&
           data.brands.map((brand) => (
             <Button
+              key={brand}
               color="inherit"
               sx={{
                 marginRight: 0.5,

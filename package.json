@@ -15,12 +15,12 @@
     "@mui/material": "^5.10.2",
     "@reduxjs/toolkit": "^1.8.5",
     "@trendyol-js/react-carousel": "^3.0.0",
+    "currency-formatter": "^1.5.2",
     "react": "^18.2.0",
-    "react-animated-number": "^0.4.4",
+    "react-alice-carousel": "^2.6.4",
     "react-dom": "^18.2.0",
-    "react-flip-numbers": "^3.0.6",
     "react-router-dom": "6",
-    "react-slick": "^0.29.0"
+    "styled-components": "^5.3.5"
   },
   "devDependencies": {
     "@types/react": "^18.0.17",

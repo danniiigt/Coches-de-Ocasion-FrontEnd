@@ -16,7 +16,7 @@ import StyleIcon from "@mui/icons-material/Style";
 import { useFetch } from "../../hooks/useFetch";
 
 export const Search = () => {
-  const { data, isLoading, hasError } = useFetch(
+  const { data: dataBrands, isLoading: isLoadingBrands } = useFetch(
     `${import.meta.env.VITE_RESTSERVER_URL}/api/brands`
   );
 
@@ -67,9 +67,11 @@ export const Search = () => {
               Selecciona una marca
             </MenuItem>
 
-            {!isLoading &&
-              data.brands.map((brand) => (
-                <MenuItem value={brand}>{brand}</MenuItem>
+            {!isLoadingBrands &&
+              dataBrands.brands.map((brand) => (
+                <MenuItem key={brand} value={brand}>
+                  {brand}
+                </MenuItem>
               ))}
           </Select>
           <IconButton
