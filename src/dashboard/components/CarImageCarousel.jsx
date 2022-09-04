@@ -1,10 +1,7 @@
 import React from "react";
-import { Carousel } from "@trendyol-js/react-carousel";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 
 export const CarImageCarousel = ({ carImages }) => {
-  console.log(carImages);
-
   const ImageWrapper = styled.div`
     height: 100%;
     width: 100%;

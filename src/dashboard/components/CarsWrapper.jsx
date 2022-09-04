@@ -1,14 +1,16 @@
-import { Box, Stack, Typography } from "@mui/material";
-import React from "react";
+import { Box, Stack } from "@mui/material";
+import { useLocation } from "react-router-dom";
 
-export const CarWrapper = ({ children }) => {
+export const CarsWrapper = ({ children }) => {
+  const { pathname } = useLocation();
+
   return (
     <Box
-      className="animate__animated animate__fadeIn animate__delay-4s"
       sx={{
-        position: "absolute",
+        position: pathname.length > 1 ? "" : "absolute",
         top: "640px",
         width: "100%",
+        paddingBottom: 7,
       }}
     >
       <Stack
@@ -19,11 +21,9 @@ export const CarWrapper = ({ children }) => {
           marginLeft: "auto",
           marginRight: "auto",
           marginTop: 10,
+          display: "flex",
         }}
       >
-        <Typography variant="h4" color="#303030">
-          Añadidos recientemente
-        </Typography>
         {children}
       </Stack>
     </Box>

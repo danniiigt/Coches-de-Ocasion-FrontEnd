@@ -1,7 +1,8 @@
-import React from "react";
 import { ScrollingCarousel } from "@trendyol-js/react-carousel";
 import { Box, Button } from "@mui/material";
 import { useFetch } from "../../hooks/useFetch";
+import { Link } from "react-router-dom";
+import { BrandCarouselSkeleton } from "./";
 
 export const BrandCarousel = () => {
   const { data, isLoading, hasError } = useFetch(
@@ -23,6 +24,7 @@ export const BrandCarousel = () => {
         leftIcon={false}
         className="scrollingCarousel"
       >
+        {isLoading && <BrandCarouselSkeleton />}
         {!isLoading &&
           data.brands.map((brand) => (
             <Button
@@ -38,7 +40,7 @@ export const BrandCarousel = () => {
                 },
               }}
             >
-              {brand}
+              <Link to={`/${brand}`}>{brand}</Link>
             </Button>
           ))}
       </ScrollingCarousel>

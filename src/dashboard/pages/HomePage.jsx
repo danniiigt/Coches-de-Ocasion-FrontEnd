@@ -1,14 +1,12 @@
 import React from "react";
-import { Cars } from "../components/Cars";
-import { NavMenu } from "../components/NavMenu";
-import { Search } from "../components/Search";
+import { Cars, NavMenu, Search } from "../components";
 
 export const HomePage = () => {
   return (
     <>
-      <NavMenu />
+      <NavMenu bgTransparent={true} />
       <Search />
-      <Cars />
+      <Cars brandPage={false} />
     </>
   );
 };

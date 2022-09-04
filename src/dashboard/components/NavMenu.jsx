@@ -8,9 +8,11 @@ import {
 } from "@mui/material";
 import HelpOutlineRoundedIcon from "@mui/icons-material/HelpOutlineRounded";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
+import backSearch from "../../assets/backSearch.png";
 import { BrandCarousel } from "./BrandCarousel";
+import { Link } from "react-router-dom";
 
-export const NavMenu = () => {
+export const NavMenu = ({ bgTransparent }) => {
   return (
     <>
       <AppBar
@@ -21,10 +23,13 @@ export const NavMenu = () => {
           justifyContent: "center",
           alignItems: "center",
           boxShadow: "none",
-          backgroundColor: "transparent",
           paddingTop: 2,
-          //   paddingRight: 4,
-          //   paddingLeft: 4,
+          paddingBottom: 2,
+          backgroundColor: bgTransparent ? "transparent" : "",
+          backgroundImage: bgTransparent ? "" : `url(${backSearch})`,
+          backgroundSize: bgTransparent ? "" : "cover",
+          backgroundRepeat: bgTransparent ? "" : "no-repeat",
+          backgroundPosition: bgTransparent ? "" : " 0 -40px",
         }}
       >
         <Toolbar
@@ -36,7 +41,7 @@ export const NavMenu = () => {
           }}
         >
           <Typography variant="h4" color="white" flexGrow={1}>
-            Coches de Ocasión
+            <Link to="/">Coches de Ocasión</Link>
           </Typography>
           <Stack direction="row" spacing={3}>
             <IconButton color="inherit">
