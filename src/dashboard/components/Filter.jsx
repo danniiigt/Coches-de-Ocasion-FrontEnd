@@ -5,7 +5,7 @@ import {
   KilometersSlider,
   PriceSlider,
   YearSlider,
-  ProvinceSelect,
+  BrandSelect,
   GearboxSelect,
   HorsepowerSelect,
 } from "./";
@@ -17,7 +17,7 @@ export const Filter = () => {
         <KilometersSlider />
         <PriceSlider />
         <YearSlider />
-        <ProvinceSelect />
+        <BrandSelect />
         <GearboxSelect />
         <HorsepowerSelect />
         <AccordionWrapper title="Puertas"></AccordionWrapper>

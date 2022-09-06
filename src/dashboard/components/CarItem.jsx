@@ -25,7 +25,7 @@ export const CarItem = ({ car, brandPage }) => {
           sx={{
             border: "1px solid #eee",
             borderRadius: 3,
-            height: brandPage ? 230 : { xl: 200, lg: 230 },
+            height: { xl: 200, lg: 230 },
             display: "flex",
             cursor: "pointer",
             width: "100%",

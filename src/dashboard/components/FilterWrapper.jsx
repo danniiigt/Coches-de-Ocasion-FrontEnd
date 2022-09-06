@@ -8,7 +8,7 @@ export const FilterWrapper = ({ children }) => {
         width: "100%",
         borderRadius: 3,
         position: "sticky",
-        top: 85,
+        top: 161,
       }}
     >
       {children}

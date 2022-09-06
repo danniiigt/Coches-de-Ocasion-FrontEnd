@@ -16,7 +16,7 @@ export const CarsWrapper = ({ children, noMarginTop }) => {
       <Stack
         spacing={2}
         sx={{
-          width: "90%",
+          width: "93%",
           maxWidth: "1300px",
           marginLeft: "auto",
           marginRight: "auto",

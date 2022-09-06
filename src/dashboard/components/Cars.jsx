@@ -1,6 +1,13 @@
-import { Box, Pagination, Stack } from "@mui/material";
+import { Pagination, Stack, TextField } from "@mui/material";
 import { useFetch } from "../../hooks/useFetch";
-import { CarItem, CarsWrapper, CarsSkeleton, Filter, CarsHeader } from "./";
+import {
+  CarItem,
+  CarsWrapper,
+  CarsSkeleton,
+  Filter,
+  CarsHeader,
+  SearchBox,
+} from "./";
 import { getFetchUrl } from "../helpers/getFetchUrl";
 import { useState } from "react";
 
@@ -12,7 +19,7 @@ export const Cars = ({ brandPage, noMarginTop }) => {
   const handlePaginationChange = (e, value) => {
     setPagination(value);
     window.scrollTo({
-      top: 700,
+      top: 0,
       behavior: "smooth",
     });
   };
@@ -29,9 +36,10 @@ export const Cars = ({ brandPage, noMarginTop }) => {
               <CarItem key={car._id} car={car} brandPage={brandPage} />
             ))}
           </Stack>
-          <Box sx={{ width: "20%" }}>
+          <Stack sx={{ width: "20%" }} spacing={2}>
+            <SearchBox />
             <Filter />
-          </Box>
+          </Stack>
         </Stack>
 
         <Pagination

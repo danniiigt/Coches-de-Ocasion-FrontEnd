@@ -52,9 +52,6 @@ export const NavMenu = ({ bgTransparent }) => {
           </Typography>
           <Stack direction="row" spacing={3}>
             <IconButton color="inherit">
-              <SearchIcon />
-            </IconButton>
-            <IconButton color="inherit">
               <HelpOutlineRoundedIcon />
             </IconButton>
             <IconButton color="inherit">

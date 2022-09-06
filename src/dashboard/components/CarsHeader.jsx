@@ -68,7 +68,7 @@ export const CarsHeader = ({ brandName, totalCars }) => {
                 borderRadius: 3,
 
                 "&:hover": {
-                  backgroundColor: "#eeeeee39",
+                  backgroundColor: "#eeeeee90",
                 },
               }}
             >

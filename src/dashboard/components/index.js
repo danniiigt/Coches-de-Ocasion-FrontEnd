@@ -22,3 +22,5 @@ export * from "./Filters/YearSlider";
 export * from "./Filters/ProvinceSelect";
 export * from "./Filters/GearboxSelect";
 export * from "./Filters/HorsepowerSelect";
+export * from "./Filters/BrandSelect";
+export * from "./Filters/SearchBox";
