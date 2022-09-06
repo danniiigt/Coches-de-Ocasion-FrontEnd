@@ -13,6 +13,7 @@ export * from "./AccordionWrapper";
 export * from "./Filter";
 export * from "./FilterWrapper";
 export * from "./FilterSkeleton";
+export * from "./CarsHeader";
 
 //SLIDERS
 export * from "./Filters/KilometersSlider";

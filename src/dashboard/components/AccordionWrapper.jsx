@@ -14,10 +14,7 @@ const Accordion = styled((props) => (
     borderBottom: 0,
   },
 
-  "&:last-child": {
-    borderRadius: "0 0 8px 8px",
-  },
-  "&:first-child": {
+  "&:first-of-type": {
     borderRadius: "8px 8px 0 0",
   },
 
@@ -32,6 +29,7 @@ export const AccordionWrapper = ({
   noPadding,
   handleClick,
   expanded,
+  buttonStyle,
 }) => {
   return (
     <Accordion expanded={expanded}>

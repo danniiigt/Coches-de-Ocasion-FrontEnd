@@ -7,6 +7,8 @@ export const FilterWrapper = ({ children }) => {
       sx={{
         width: "100%",
         borderRadius: 3,
+        position: "sticky",
+        top: 85,
       }}
     >
       {children}

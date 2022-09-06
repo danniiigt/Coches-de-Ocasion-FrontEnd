@@ -1,11 +1,11 @@
 import React from "react";
 import { Cars, NavMenu } from "../components";
 
-export const BrandPage = () => {
+export const CarsPage = () => {
   return (
     <>
       <NavMenu bgTransparent={false} />
-      <Cars brandPage={true} noMarginTop />
+      <Cars brandPage={false} noMarginTop />
     </>
   );
 };

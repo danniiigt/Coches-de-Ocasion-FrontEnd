@@ -26,6 +26,11 @@ export const CarsSkeleton = () => {
             <CarSkeleton />
             <CarSkeleton />
             <CarSkeleton />
+            <CarSkeleton />
+            <CarSkeleton />
+            <CarSkeleton />
+            <CarSkeleton />
+            <CarSkeleton />
           </Stack>
 
           <Box sx={{ width: "20%" }}>

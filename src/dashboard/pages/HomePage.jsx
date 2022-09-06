@@ -6,7 +6,7 @@ export const HomePage = () => {
     <>
       <NavMenu bgTransparent={true} />
       <Search />
-      <Cars brandPage={false} />
+      {/* <Cars brandPage={false} /> */}
     </>
   );
 };

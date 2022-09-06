@@ -40,6 +40,7 @@ export const Search = () => {
           <TextField
             fullWidth
             color="primary"
+            autoComplete="off"
             InputProps={{
               placeholder: "¿Que coche buscas?",
               style: {

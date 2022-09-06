@@ -1,6 +1,7 @@
 import { Box, Divider, Stack, Typography } from "@mui/material";
 import { CarImageCarousel } from "./CarImageCarousel";
 import { format } from "currency-formatter";
+import { useEffect } from "react";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import VerifiedIcon from "@mui/icons-material/Verified";
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
@@ -10,7 +11,6 @@ import StarBorderIcon from "@mui/icons-material/StarBorder";
 import DirectionsCarFilledOutlinedIcon from "@mui/icons-material/DirectionsCarFilledOutlined";
 import Aos from "aos";
 import "aos/dist/aos.css";
-import { useEffect } from "react";
 
 export const CarItem = ({ car, brandPage }) => {
   useEffect(() => {
@@ -71,7 +71,11 @@ export const CarItem = ({ car, brandPage }) => {
             <Typography
               variant="h6"
               sx={{
-                span: { color: "primary.main", fontWeight: 600, fontSize: 22 },
+                span: {
+                  color: "primary.main",
+                  fontWeight: 600,
+                  fontSize: 22,
+                },
               }}
               fontWeight={300}
               gutterBottom
@@ -151,7 +155,7 @@ export const CarItem = ({ car, brandPage }) => {
             </Stack>
             {/* 
           <Stack direction="row" spacing={3} mt={2}>
-          </Stack> */}
+        </Stack> */}
 
             {car.carTags.warranty && (
               <Stack direction="row" mt={2}>

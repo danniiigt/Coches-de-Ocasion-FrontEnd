@@ -1,7 +1,7 @@
 import { Box, Stack } from "@mui/material";
 import { useLocation } from "react-router-dom";
 
-export const CarsWrapper = ({ children }) => {
+export const CarsWrapper = ({ children, noMarginTop }) => {
   const { pathname } = useLocation();
 
   return (
@@ -14,13 +14,13 @@ export const CarsWrapper = ({ children }) => {
       }}
     >
       <Stack
-        spacing={5}
+        spacing={2}
         sx={{
           width: "90%",
           maxWidth: "1300px",
           marginLeft: "auto",
           marginRight: "auto",
-          marginTop: 10,
+          marginTop: noMarginTop ? 0 : 10,
           display: "flex",
         }}
       >
