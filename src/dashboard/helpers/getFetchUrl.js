@@ -14,7 +14,7 @@ export const getFetchUrl = (brandPage, pagination) => {
   } else {
     let fetchUrl = `${
       import.meta.env.VITE_RESTSERVER_URL
-    }/api/cars?page=${pagination}&limit=15`;
+    }/api/cars?page=${pagination}&limit=${import.meta.env.VITE_CARS_LIMIT}`;
 
     return { fetchUrl };
   }

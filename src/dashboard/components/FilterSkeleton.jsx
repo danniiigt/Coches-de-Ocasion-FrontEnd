@@ -7,7 +7,13 @@ export const FilterSkeleton = () => {
       <Skeleton
         variant="rectangular"
         width={"100%"}
-        height={569}
+        height={56}
+        sx={{ borderRadius: 3, mb: 3 }}
+      />
+      <Skeleton
+        variant="rectangular"
+        width={"100%"}
+        height={644.5}
         sx={{ borderRadius: 3 }}
       />
     </Box>
