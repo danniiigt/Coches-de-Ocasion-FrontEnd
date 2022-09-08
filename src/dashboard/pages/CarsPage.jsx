@@ -5,11 +5,11 @@ import { Cars, NavMenu } from "../components";
 
 export const CarsPage = () => {
   const dispatch = useDispatch();
-  const { page } = useSelector((state) => state.cars);
+  const { page, orderBy } = useSelector((state) => state.cars);
 
   useEffect(() => {
-    dispatch(importCars(page || 1));
-  }, [page]);
+    dispatch(importCars(page || 1, 15, null, orderBy || "recent"));
+  }, [page, orderBy]);
 
   return (
     <>

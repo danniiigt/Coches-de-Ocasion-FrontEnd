@@ -4,7 +4,7 @@ import { useFetch } from "../../hooks/useFetch";
 import { Link } from "react-router-dom";
 import { BrandCarouselSkeleton } from "./";
 
-export const BrandCarousel = () => {
+export const BrandCarousel = ({ fullWidth }) => {
   const { data, isLoading, hasError } = useFetch(
     `${import.meta.env.VITE_RESTSERVER_URL}/api/brands`
   );
@@ -14,7 +14,12 @@ export const BrandCarousel = () => {
       sx={{
         color: "#eeee",
         maxWidth: "1330px",
-        width: "93%",
+        width: fullWidth ? "100%" : "93%",
+        padding: fullWidth ? "0 12px" : 0,
+        boxSizing: fullWidth ? "border-box" : "",
+        backgroundColor: fullWidth ? "#4167FE" : "",
+        marginTop: fullWidth ? 2 : 0,
+        borderRadius: fullWidth ? 4 : 0,
         marginLeft: "auto",
         marginRight: "auto",
       }}

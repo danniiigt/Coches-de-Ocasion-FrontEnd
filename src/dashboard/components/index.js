@@ -24,3 +24,4 @@ export * from "./Filters/GearboxSelect";
 export * from "./Filters/HorsepowerSelect";
 export * from "./Filters/BrandSelect";
 export * from "./Filters/SearchBox";
+export * from "./Filters/OrderBy";

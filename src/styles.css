@@ -3,6 +3,29 @@ body {
   background-color: #fafafa;
 }
 
+.delay0 {
+  animation-delay: 0.2s;
+}
+.delay1 {
+  animation-delay: 0.6s;
+}
+.delay2 {
+  animation-delay: 1s;
+}
+.delay3 {
+  animation-delay: 1.4s;
+}
+.delay4 {
+  animation-delay: 1.8s;
+}
+.delay5 {
+  animation-delay: 2.2s;
+}
+
+.delayDefault {
+  animation-delay: 2.4s;
+}
+
 *::-webkit-scrollbar {
   width: 10px;
 }

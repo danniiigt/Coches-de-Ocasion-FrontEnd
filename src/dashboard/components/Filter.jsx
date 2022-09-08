@@ -1,4 +1,4 @@
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Button, Stack, Typography } from "@mui/material";
 import {
   AccordionWrapper,
   FilterWrapper,
@@ -9,6 +9,8 @@ import {
   GearboxSelect,
   HorsepowerSelect,
 } from "./";
+import DoneIcon from "@mui/icons-material/Done";
+import RestartAltIcon from "@mui/icons-material/RestartAlt";
 
 export const Filter = () => {
   return (
@@ -22,44 +24,45 @@ export const Filter = () => {
         <HorsepowerSelect />
         <AccordionWrapper title="Puertas"></AccordionWrapper>
         <AccordionWrapper title="Más"></AccordionWrapper>
-        <Box
-          sx={{
-            width: "100%",
-            height: 40,
-            display: "flex",
-            alignItems: "center",
-            backgroundColor: "white",
-            cursor: "pointer",
-            p: "5px 16px",
-            boxSizing: "border-box",
-            border: "1px solid rgba(0, 0, 0, 0.12)",
-          }}
-        >
-          <Typography
+        <Stack direction="row">
+          <Button
+            fullWidth
+            color="inherit"
+            variant="contained"
             sx={{
-              fontSize: "0.9rem",
-              fontWeight: 400,
-              color: "#292929",
-              width: "100%",
-              textAlign: "center",
-              textTransform: "uppercase",
+              borderRadius: "0 0 0 6px",
+              boxSizing: "border-box",
+              boxShadow: "none",
+              backgroundColor: "white",
+              border: "1px solid #d8d8d8",
+
               "&:hover": {
-                color: "primary.main",
+                boxShadow: "none",
               },
             }}
-            component="p"
           >
-            Restablecer Filtros
-          </Typography>
-        </Box>
-        <Button
-          fullWidth
-          variant="contained"
-          color="primary"
-          sx={{ borderRadius: "0 0 10px 10px" }}
-        >
-          Aplicar Filtros
-        </Button>
+            <RestartAltIcon sx={{ color: "#3b3b3bed" }} />
+          </Button>
+          <Button
+            fullWidth
+            color="primary"
+            variant="contained"
+            sx={{
+              borderRadius: "0 0 6px 0",
+              boxSizing: "border-box",
+              boxShadow: "none",
+              border: "1px solid #d8d8d8",
+              borderLeft: "none",
+
+              "&:hover": {
+                boxShadow: "none",
+                border: "1px solid primary.main",
+              },
+            }}
+          >
+            <DoneIcon />
+          </Button>
+        </Stack>
       </FilterWrapper>
     </>
   );

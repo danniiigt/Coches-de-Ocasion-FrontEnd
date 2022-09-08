@@ -5,7 +5,7 @@ import { useLocation } from "react-router-dom";
 import { importCars } from "../../store/cars";
 
 export const BrandPage = () => {
-  const { page } = useSelector((state) => state.cars);
+  const { page, orderBy } = useSelector((state) => state.cars);
   const { pathname } = useLocation();
   const dispatch = useDispatch();
   let brandName = "";
@@ -15,11 +15,11 @@ export const BrandPage = () => {
   }
 
   useEffect(() => {
-    dispatch(importCars(page || 1, 15, brandName));
-  }, [page]);
+    dispatch(importCars(page || 1, 15, brandName, orderBy || "recent"));
+  }, [page, orderBy]);
 
   useEffect(() => {
-    dispatch(importCars(1, 15, brandName));
+    dispatch(importCars(1, 15, brandName, orderBy || "recent"));
   }, [brandName]);
 
   return (

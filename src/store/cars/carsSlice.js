@@ -9,6 +9,7 @@ export const carsSlice = createSlice({
     isLoading: true,
     page: null,
     maxPages: null,
+    orderBy: null,
     total: null,
     cars: null,
     filterQuery: {
@@ -20,7 +21,7 @@ export const carsSlice = createSlice({
       yearMax: actualYear,
       //   brand: null,
       //   gearBox: ['Manual', 'Automatico'],
-      hpMin: 60,
+      hpMin: 50,
       hpMax: 750,
     },
     selectedCar: null,
@@ -32,6 +33,10 @@ export const carsSlice = createSlice({
       state.total = action.payload.total;
       state.cars = action.payload.cars;
       state.maxPages = action.payload.maxPages;
+      state.orderBy = action.payload.orderBy;
+    },
+    setOrderBy: (state, action) => {
+      state.orderBy = action.payload;
     },
     setLoading: (state, action) => {
       state.isLoading = true;
@@ -39,10 +44,18 @@ export const carsSlice = createSlice({
     setPage: (state, action) => {
       state.page = action.payload;
     },
-    setSelectedCar: (state, action) => {},
+    setSelectedCar: (state, action) => {
+      state.selectedCar = action.payload;
+    },
     setFilterQuery: (state, action) => {},
   },
 });
 
-export const { setCars, setLoading, setPage, setSelectedCar, setFilterQuery } =
-  carsSlice.actions;
+export const {
+  setCars,
+  setOrderBy,
+  setLoading,
+  setPage,
+  setSelectedCar,
+  setFilterQuery,
+} = carsSlice.actions;

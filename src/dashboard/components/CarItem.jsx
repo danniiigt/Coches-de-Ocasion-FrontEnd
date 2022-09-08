@@ -1,4 +1,6 @@
 import { Box, Divider, Stack, Typography } from "@mui/material";
+import { useDispatch } from "react-redux";
+import { importSelectedCar } from "../../store/cars";
 import { CarImageCarousel } from "./CarImageCarousel";
 import { format } from "currency-formatter";
 import { useEffect } from "react";
@@ -12,15 +14,28 @@ import DirectionsCarFilledOutlinedIcon from "@mui/icons-material/DirectionsCarFi
 import Aos from "aos";
 import "aos/dist/aos.css";
 
-export const CarItem = ({ car, brandPage }) => {
+export const CarItem = ({ car, brandPage, index }) => {
+  const dispatch = useDispatch();
+  const indexesAnimated = [0, 1, 2, 3, 4, 5];
+
   useEffect(() => {
     Aos.init({ once: true });
   }, []);
+
+  const handleSelectCar = () => {
+    const carId = car.uid;
+    dispatch(importSelectedCar(carId));
+  };
 
   return (
     <>
       {car.carData && car.carTags && (
         <Box
+          onClick={() => handleSelectCar()}
+          className={
+            indexesAnimated.includes(index) &&
+            `animate__animated animate__fadeIn delay${index}`
+          }
           data-aos="fade-right"
           sx={{
             border: "1px solid #eee",

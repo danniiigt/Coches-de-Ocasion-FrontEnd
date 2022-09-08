@@ -1,14 +1,7 @@
-import { Box, IconButton, Stack, Typography } from "@mui/material";
+import { Box, Stack, Typography } from "@mui/material";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
-import { useEffect } from "react";
-import SearchIcon from "@mui/icons-material/Search";
 
 export const CarsHeader = ({ brandName, totalCars }) => {
-  useEffect(() => {
-    console.log(`Refresh`);
-    console.log(window.scrollY);
-  }, [window.scrollY]);
-
   return (
     <>
       <Box

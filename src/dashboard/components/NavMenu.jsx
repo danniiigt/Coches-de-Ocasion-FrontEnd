@@ -42,7 +42,7 @@ export const NavMenu = ({ bgTransparent }) => {
             backgroundImage: `url(${backSearch})`,
             backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
-            backgroundPosition: " 0 -440px",
+            backgroundPosition: " 0 -120px",
             width: "100%",
             // marginTop: 1,
             // marginBottom: 4,
@@ -78,6 +78,7 @@ export const NavMenu = ({ bgTransparent }) => {
             </Stack>
           </Toolbar>
         </AppBar>
+        {/* <BrandCarousel fullWidth /> */}
       </Box>
     );
   } else {

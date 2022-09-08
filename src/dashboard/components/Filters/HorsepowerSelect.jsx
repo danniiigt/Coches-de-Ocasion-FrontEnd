@@ -20,7 +20,7 @@ export const HorsepowerSelect = () => {
       </Typography>
       <Slider
         getAriaLabel={() => "Horsepower Range"}
-        min={60}
+        min={50}
         max={750}
         step={10}
         value={horsepowerValue}
