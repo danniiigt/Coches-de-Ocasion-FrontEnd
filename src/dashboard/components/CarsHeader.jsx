@@ -9,7 +9,7 @@ export const CarsHeader = ({ brandName, totalCars }) => {
           justifyContent: "space-between",
           position: "sticky",
           alignItems: "center",
-          backgroundColor: "#fafafa",
+          backgroundColor: "#f3f3f3",
           zIndex: 100,
           top: 0,
           paddingTop: 1,
@@ -74,7 +74,7 @@ export const CarsHeader = ({ brandName, totalCars }) => {
         </Stack>
         <Box
           sx={{
-            backgroundColor: "#fafafa",
+            backgroundColor: "#f3f3f3",
             height: 10,
             width: "100%",
             zIndex: 100,

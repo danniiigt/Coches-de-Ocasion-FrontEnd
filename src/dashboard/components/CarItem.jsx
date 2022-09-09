@@ -16,7 +16,7 @@ import "aos/dist/aos.css";
 
 export const CarItem = ({ car, brandPage, index }) => {
   const dispatch = useDispatch();
-  const indexesAnimated = [0, 1, 2, 3, 4, 5];
+  const indexesAnimated = [0, 1, 2, 3, 4];
 
   useEffect(() => {
     Aos.init({ once: true });
@@ -36,7 +36,7 @@ export const CarItem = ({ car, brandPage, index }) => {
             indexesAnimated.includes(index) &&
             `animate__animated animate__fadeIn delay${index}`
           }
-          data-aos="fade-right"
+          data-aos={!indexesAnimated.includes(index) && "fade-right"}
           sx={{
             border: "1px solid #eee",
             borderRadius: 3,

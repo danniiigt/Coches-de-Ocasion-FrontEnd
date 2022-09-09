@@ -10,7 +10,6 @@ import {
 } from "./";
 import { setPage } from "../../store/cars";
 import { useDispatch } from "react-redux";
-import { AnimatePresence, AnimateSharedLayout, motion } from "framer-motion";
 
 export const Cars = ({ brandPage, noMarginTop }) => {
   const dispatch = useDispatch();

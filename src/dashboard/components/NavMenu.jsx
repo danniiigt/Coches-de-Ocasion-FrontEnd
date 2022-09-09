@@ -24,7 +24,7 @@ export const NavMenu = ({ bgTransparent }) => {
           margin: "0 0 10px 0",
           marginLeft: "auto",
           marginRight: "auto",
-          backgroundColor: "#fafafa",
+          backgroundColor: "#f3f3f3",
           position: "sticky",
           top: 0,
           zIndex: 101,
