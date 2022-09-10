@@ -1,16 +1,27 @@
-import React, { useState } from "react";
+import { useContext, useState } from "react";
 import { Slider, Typography } from "@mui/material";
 import { AccordionWrapper } from "../";
+import { useSelector } from "react-redux";
+import { FilterContext } from "./context/FilterContext";
 
 function valuetext(value) {
   return `${value}cv`;
 }
 
 export const HorsepowerSelect = () => {
-  const [horsepowerValue, setHorsepowerValue] = useState([150, 350]);
+  const { filterQuery } = useSelector((state) => state.cars);
+  const { hpMin, hpMax } = filterQuery;
+  const { notAppliedFilterQuery, setNotAppliedFilterQuery } =
+    useContext(FilterContext);
+  const [horsepowerValue, setHorsepowerValue] = useState([hpMin, hpMax]);
 
   const handleChange = (event, newValue) => {
     setHorsepowerValue(newValue);
+    setNotAppliedFilterQuery({
+      ...notAppliedFilterQuery,
+      hpMin: horsepowerValue[0],
+      hpMax: horsepowerValue[1],
+    });
   };
 
   return (
@@ -21,7 +32,7 @@ export const HorsepowerSelect = () => {
       <Slider
         getAriaLabel={() => "Horsepower Range"}
         min={50}
-        max={750}
+        max={1000}
         step={10}
         value={horsepowerValue}
         onChange={handleChange}

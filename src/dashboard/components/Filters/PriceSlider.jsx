@@ -1,16 +1,27 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Slider, Typography } from "@mui/material";
 import { AccordionWrapper } from "../";
+import { useSelector } from "react-redux";
+import { FilterContext } from "./context/FilterContext";
 
 function valuetext(value) {
   return `${value}€`;
 }
 
 export const PriceSlider = () => {
-  const [priceValue, setPriceValue] = useState([0, 10000]);
+  const { filterQuery } = useSelector((state) => state.cars);
+  const { priceMin, priceMax } = filterQuery;
+  const { notAppliedFilterQuery, setNotAppliedFilterQuery } =
+    useContext(FilterContext);
+  const [priceValue, setPriceValue] = useState([priceMin, priceMax]);
 
   const handleChange = (event, newValue) => {
     setPriceValue(newValue);
+    setNotAppliedFilterQuery({
+      ...notAppliedFilterQuery,
+      priceMin: priceValue[0],
+      priceMax: priceValue[1],
+    });
   };
 
   return (
@@ -20,7 +31,7 @@ export const PriceSlider = () => {
       </Typography>
       <Slider
         getAriaLabel={() => "Price range"}
-        max={250000}
+        max={750000}
         step={1000}
         value={priceValue}
         onChange={handleChange}

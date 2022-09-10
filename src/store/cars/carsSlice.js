@@ -3,29 +3,32 @@ import { createSlice } from "@reduxjs/toolkit";
 const date = new Date();
 const actualYear = date.getFullYear();
 
+const initialState = {
+  isLoading: true,
+  page: null,
+  maxPages: null,
+  orderBy: null,
+  total: null,
+  cars: null,
+  filterQuery: {
+    kmMin: 0,
+    kmMax: 500000,
+    priceMin: 0,
+    priceMax: 500000,
+    yearMin: 1975,
+    yearMax: actualYear,
+    // brand: null,
+    // gearBox: null,
+    hpMin: 0,
+    hpMax: 1000,
+    // doors: null,
+  },
+  selectedCar: null,
+};
+
 export const carsSlice = createSlice({
   name: "cars",
-  initialState: {
-    isLoading: true,
-    page: null,
-    maxPages: null,
-    orderBy: null,
-    total: null,
-    cars: null,
-    filterQuery: {
-      kmMin: 0,
-      kmMax: 10000000,
-      priceMin: 0,
-      priceMax: 10000000,
-      yearMin: 1975,
-      yearMax: actualYear,
-      //   brand: null,
-      //   gearBox: ['Manual', 'Automatico'],
-      hpMin: 50,
-      hpMax: 750,
-    },
-    selectedCar: null,
-  },
+  initialState,
   reducers: {
     setCars: (state, action) => {
       state.isLoading = false;
@@ -47,7 +50,15 @@ export const carsSlice = createSlice({
     setSelectedCar: (state, action) => {
       state.selectedCar = action.payload;
     },
-    setFilterQuery: (state, action) => {},
+    resetFilterQuery: (state, action) => {
+      state.filterQuery = initialState.filterQuery;
+    },
+    setFilterQuery: (state, action) => {
+      state.filterQuery = {
+        ...state.filterQuery,
+        ...action.payload,
+      };
+    },
   },
 });
 
@@ -57,5 +68,6 @@ export const {
   setLoading,
   setPage,
   setSelectedCar,
+  resetFilterQuery,
   setFilterQuery,
 } = carsSlice.actions;

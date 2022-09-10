@@ -5,11 +5,12 @@ export const importCars = (
   page = 1,
   limit = 15,
   brand = null,
-  orderBy = "recent"
+  orderBy = "recent",
+  filterQuery
 ) => {
   return async (dispatch) => {
     dispatch(setLoading());
-    const data = await fetchCars(page, limit, brand, orderBy);
+    const data = await fetchCars(page, limit, brand, orderBy, filterQuery);
     dispatch(setCars(data));
   };
 };

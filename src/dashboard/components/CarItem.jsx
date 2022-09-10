@@ -17,6 +17,12 @@ import "aos/dist/aos.css";
 export const CarItem = ({ car, brandPage, index }) => {
   const dispatch = useDispatch();
   const indexesAnimated = [0, 1, 2, 3, 4];
+  const combustionTypes = [
+    "Gasolina",
+    "Diesel",
+    "Híbrido",
+    "Gas natural (CNG)",
+  ];
 
   useEffect(() => {
     Aos.init({ once: true });
@@ -24,6 +30,7 @@ export const CarItem = ({ car, brandPage, index }) => {
 
   const handleSelectCar = () => {
     const carId = car.uid;
+    console.log(car);
     dispatch(importSelectedCar(carId));
   };
 
@@ -131,7 +138,8 @@ export const CarItem = ({ car, brandPage, index }) => {
                   {car.carTags.year}
                 </Typography>
               </Stack>
-              {car.carTags.combustion && (
+              {car.carTags.combustion &&
+              combustionTypes.includes(car.carTags.combustion) ? (
                 <Stack direction="row">
                   <Typography variant="h7" fontWeight={300} noWrap>
                     <LocalGasStationIcon
@@ -140,6 +148,17 @@ export const CarItem = ({ car, brandPage, index }) => {
                       color="primary"
                     />
                     {car.carTags.combustion}
+                  </Typography>
+                </Stack>
+              ) : (
+                <Stack direction="row">
+                  <Typography variant="h7" fontWeight={300} noWrap>
+                    <LocalGasStationIcon
+                      fontSize="small"
+                      sx={{ mb: -0.5, mr: 1 }}
+                      color="primary"
+                    />
+                    {car.carTags.emisions}
                   </Typography>
                 </Stack>
               )}
@@ -172,19 +191,34 @@ export const CarItem = ({ car, brandPage, index }) => {
           <Stack direction="row" spacing={3} mt={2}>
         </Stack> */}
 
-            {car.carTags.warranty && (
-              <Stack direction="row" mt={2}>
-                <Typography variant="h7" fontWeight={300} noWrap>
-                  <VerifiedIcon
-                    fontSize="small"
-                    sx={{ mb: -0.5, mr: 1 }}
-                    color="success"
-                  />
+            {car.carTags.warranty &&
+              car.carTags.warranty.startsWith("Garantía") && (
+                <Stack direction="row" mt={2}>
+                  <Typography variant="h7" fontWeight={300} noWrap>
+                    <VerifiedIcon
+                      fontSize="small"
+                      sx={{ mb: -0.5, mr: 1 }}
+                      color="success"
+                    />
 
-                  {car.carTags.warranty}
-                </Typography>
-              </Stack>
-            )}
+                    {car.carTags.warranty}
+                  </Typography>
+                </Stack>
+              )}
+            {car.carTags.combustion &&
+              !combustionTypes.includes(car.carTags.combustion) &&
+              car.carTags.combustion.startsWith("Garantía") && (
+                <Stack direction="row" mt={2}>
+                  <Typography variant="h7" fontWeight={300} noWrap>
+                    <VerifiedIcon
+                      fontSize="small"
+                      sx={{ mb: -0.5, mr: 1 }}
+                      color="success"
+                    />
+                    {car.carTags.combustion}
+                  </Typography>
+                </Stack>
+              )}
           </Box>
         </Box>
       )}

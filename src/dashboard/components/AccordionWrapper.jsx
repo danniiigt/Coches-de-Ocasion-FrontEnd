@@ -8,7 +8,7 @@ const Accordion = styled((props) => (
 ))(({ theme }) => ({
   border: `1px solid ${theme.palette.divider}`,
   paddingTop: 10,
-  minHeight: 60,
+  minHeight: 55,
 
   "&:not(:last-child)": {
     borderBottom: 0,

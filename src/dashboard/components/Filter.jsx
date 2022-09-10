@@ -1,4 +1,4 @@
-import { Box, Button, Stack, Typography } from "@mui/material";
+import { Button, Stack } from "@mui/material";
 import {
   AccordionWrapper,
   FilterWrapper,
@@ -11,8 +11,34 @@ import {
 } from "./";
 import DoneIcon from "@mui/icons-material/Done";
 import RestartAltIcon from "@mui/icons-material/RestartAlt";
+import { useDispatch } from "react-redux";
+import { resetFilterQuery, setFilterQuery } from "../../store/cars";
+import { FilterContext } from "./Filters/context/FilterContext";
+import { useContext } from "react";
+import { FilterProvider } from "./Filters/context/FilterProvider";
 
 export const Filter = () => {
+  const dispatch = useDispatch();
+  const { notAppliedFilterQuery } = useContext(FilterContext);
+
+  const handleSubmitChanges = () => {
+    if (Object.keys(notAppliedFilterQuery).length > 0) {
+      dispatch(setFilterQuery(notAppliedFilterQuery));
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    }
+  };
+
+  const handleResetFilterQuery = () => {
+    dispatch(resetFilterQuery());
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <>
       <FilterWrapper>
@@ -22,13 +48,12 @@ export const Filter = () => {
         <BrandSelect />
         <GearboxSelect />
         <HorsepowerSelect />
-        <AccordionWrapper title="Puertas"></AccordionWrapper>
-        <AccordionWrapper title="Más"></AccordionWrapper>
         <Stack direction="row">
           <Button
             fullWidth
             color="inherit"
             variant="contained"
+            onClick={handleResetFilterQuery}
             sx={{
               borderRadius: "0 0 0 6px",
               boxSizing: "border-box",
@@ -47,12 +72,12 @@ export const Filter = () => {
             fullWidth
             color="primary"
             variant="contained"
+            onClick={handleSubmitChanges}
             sx={{
               borderRadius: "0 0 6px 0",
               boxSizing: "border-box",
               boxShadow: "none",
               border: "1px solid #d8d8d8",
-              borderLeft: "none",
 
               "&:hover": {
                 boxShadow: "none",

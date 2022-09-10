@@ -14,6 +14,7 @@ export * from "./Filter";
 export * from "./FilterWrapper";
 export * from "./FilterSkeleton";
 export * from "./CarsHeader";
+export * from "./NoCarsFound";
 
 //SLIDERS
 export * from "./Filters/KilometersSlider";

@@ -2,10 +2,10 @@ import React, { useEffect } from "react";
 import { Cars, NavMenu } from "../components";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
-import { importCars } from "../../store/cars";
+import { importCars, resetFilterQuery } from "../../store/cars";
 
 export const BrandPage = () => {
-  const { page, orderBy } = useSelector((state) => state.cars);
+  const { page, orderBy, filterQuery } = useSelector((state) => state.cars);
   const { pathname } = useLocation();
   const dispatch = useDispatch();
   let brandName = "";
@@ -15,11 +15,14 @@ export const BrandPage = () => {
   }
 
   useEffect(() => {
-    dispatch(importCars(page || 1, 15, brandName, orderBy || "recent"));
-  }, [page, orderBy]);
+    dispatch(
+      importCars(page || 1, 15, brandName, orderBy || "recent", filterQuery)
+    );
+  }, [page, orderBy, filterQuery]);
 
   useEffect(() => {
-    dispatch(importCars(1, 15, brandName, orderBy || "recent"));
+    dispatch(resetFilterQuery());
+    dispatch(importCars(1, 15, brandName, orderBy || "recent", filterQuery));
   }, [brandName]);
 
   return (

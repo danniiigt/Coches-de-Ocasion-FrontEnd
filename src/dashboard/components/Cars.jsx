@@ -1,4 +1,4 @@
-import { Pagination, Stack } from "@mui/material";
+import { Pagination, Stack, Typography } from "@mui/material";
 import { useSelector } from "react-redux";
 import {
   CarItem,
@@ -7,9 +7,11 @@ import {
   Filter,
   SearchBox,
   OrderBy,
+  NoCarsFound,
 } from "./";
 import { setPage } from "../../store/cars";
 import { useDispatch } from "react-redux";
+import { FilterProvider } from "./Filters/context/FilterProvider";
 
 export const Cars = ({ brandPage, noMarginTop }) => {
   const dispatch = useDispatch();
@@ -26,7 +28,11 @@ export const Cars = ({ brandPage, noMarginTop }) => {
   };
 
   if (isLoading) {
-    return <CarsSkeleton />;
+    return (
+      <FilterProvider>
+        <CarsSkeleton />
+      </FilterProvider>
+    );
   } else {
     return (
       <CarsWrapper noMarginTop={noMarginTop}>
@@ -36,34 +42,23 @@ export const Cars = ({ brandPage, noMarginTop }) => {
             spacing={3}
             className="animate__animated animate__fadeIn"
           >
-            {/* <AnimateSharedLayout type="crossfade"> */}
-            {/* <AnimatePresence>
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                >
-                  <CarItem
-                    key={cars[0]._id}
-                    car={cars[0]}
-                    brandPage={brandPage}
-                  />
-                </motion.div>
-              </AnimatePresence> */}
-            {cars.map((car, i) => (
-              <CarItem
-                key={car._id}
-                index={i}
-                car={car}
-                brandPage={brandPage}
-              />
-            ))}
-            {/* </AnimateSharedLayout> */}
+            {cars.length >= 1 &&
+              cars.map((car, i) => (
+                <CarItem
+                  key={car._id}
+                  index={i}
+                  car={car}
+                  brandPage={brandPage}
+                />
+              ))}
+            {cars.length === 0 && <NoCarsFound />}
           </Stack>
           <Stack sx={{ width: "20%" }} spacing={2}>
             <OrderBy />
             <SearchBox />
-            <Filter />
+            <FilterProvider>
+              <Filter />
+            </FilterProvider>
           </Stack>
         </Stack>
 

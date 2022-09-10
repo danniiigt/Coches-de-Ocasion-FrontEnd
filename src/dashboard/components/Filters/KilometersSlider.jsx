@@ -1,16 +1,27 @@
-import React, { useState } from "react";
+import { useContext, useState } from "react";
 import { Slider, Typography } from "@mui/material";
 import { AccordionWrapper } from "../";
+import { useSelector } from "react-redux";
+import { FilterContext } from "./context/FilterContext";
 
 function valuetext(value) {
   return `${value} kms`;
 }
 
 export const KilometersSlider = () => {
-  const [kmValue, setKmValue] = useState([0, 75000]);
+  const { filterQuery } = useSelector((state) => state.cars);
+  const { kmMin, kmMax } = filterQuery;
+  const { notAppliedFilterQuery, setNotAppliedFilterQuery } =
+    useContext(FilterContext);
+  const [kmValue, setKmValue] = useState([kmMin, kmMax]);
 
   const handleChange = (event, newValue) => {
     setKmValue(newValue);
+    setNotAppliedFilterQuery({
+      ...notAppliedFilterQuery,
+      kmMin: kmValue[0],
+      kmMax: kmValue[1],
+    });
   };
 
   return (
