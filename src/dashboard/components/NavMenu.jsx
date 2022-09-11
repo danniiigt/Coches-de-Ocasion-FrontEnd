@@ -21,7 +21,6 @@ import { setDarkMode, setLightMode } from "../../store/theme/themeSlice";
 export const NavMenu = ({ bgTransparent }) => {
   const { theme, type } = useSelector((state) => state.theme);
   const dispatch = useDispatch();
-  console.log(type);
 
   const handleSetLightMode = () => {
     dispatch(setLightMode());
