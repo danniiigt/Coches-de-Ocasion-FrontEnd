@@ -1,7 +1,14 @@
 import React from "react";
 import { ThemeProvider } from "@mui/material";
-import { theme } from "./theme";
+import { lightTheme, darkTheme } from "./";
+import { useSelector } from "react-redux";
 
 export const AppTheme = ({ children }) => {
-  return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
+  const { type } = useSelector((state) => state.theme);
+
+  if (type == "dark") {
+    return <ThemeProvider theme={darkTheme}>{children}</ThemeProvider>;
+  } else if (type == "light") {
+    return <ThemeProvider theme={lightTheme}>{children}</ThemeProvider>;
+  }
 };

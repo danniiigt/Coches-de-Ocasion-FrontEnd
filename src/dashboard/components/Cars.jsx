@@ -65,6 +65,7 @@ export const Cars = ({ brandPage, noMarginTop }) => {
         {maxPages === 0 ||
           (maxPages > 1 && (
             <Pagination
+              sx={{ color: "white" }}
               count={maxPages}
               page={page}
               color="primary"

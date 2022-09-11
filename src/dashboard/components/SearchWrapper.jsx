@@ -2,16 +2,21 @@ import { Box, Typography } from "@mui/material";
 import { Stack } from "@mui/system";
 import React from "react";
 import backSearch from "../../assets/backSearch.png";
+import backSearchDark from "../../assets/backSearchDark.png";
 import happyCar from "../../assets/happyCar.png";
 import SellIcon from "@mui/icons-material/Sell";
 import DirectionsCarIcon from "@mui/icons-material/DirectionsCar";
 import EmojiEmotionsIcon from "@mui/icons-material/EmojiEmotions";
+import { useSelector } from "react-redux";
 
 export const SearchWrapper = ({ children }) => {
+  const { type } = useSelector((state) => state.theme);
+
   return (
     <Box
       sx={{
-        backgroundImage: `url(${backSearch})`,
+        backgroundImage:
+          type === "dark" ? `url(${backSearchDark})` : `url(${backSearch})`,
         backgroundSize: "cover",
         backgroundPosition: " 0 -240px ",
         backgroundRepeat: "no-repeat",

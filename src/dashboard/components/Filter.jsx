@@ -11,7 +11,7 @@ import {
 } from "./";
 import DoneIcon from "@mui/icons-material/Done";
 import RestartAltIcon from "@mui/icons-material/RestartAlt";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { resetFilterQuery, setFilterQuery } from "../../store/cars";
 import { FilterContext } from "./Filters/context/FilterContext";
 import { useContext } from "react";
@@ -19,6 +19,7 @@ import { FilterProvider } from "./Filters/context/FilterProvider";
 
 export const Filter = () => {
   const dispatch = useDispatch();
+  const { theme } = useSelector((state) => state.theme);
   const { notAppliedFilterQuery } = useContext(FilterContext);
 
   const handleSubmitChanges = () => {
@@ -58,15 +59,15 @@ export const Filter = () => {
               borderRadius: "0 0 0 6px",
               boxSizing: "border-box",
               boxShadow: "none",
-              backgroundColor: "white",
-              border: "1px solid #d8d8d8",
+              backgroundColor: theme.bgSecondary,
+              border: `1px solid ${theme.borderColor}`,
 
               "&:hover": {
                 boxShadow: "none",
               },
             }}
           >
-            <RestartAltIcon sx={{ color: "#3b3b3bed" }} />
+            <RestartAltIcon sx={{ color: theme.textPrimary }} />
           </Button>
           <Button
             fullWidth
@@ -77,7 +78,7 @@ export const Filter = () => {
               borderRadius: "0 0 6px 0",
               boxSizing: "border-box",
               boxShadow: "none",
-              border: "1px solid #d8d8d8",
+              border: `1px solid ${theme.borderColor}`,
 
               "&:hover": {
                 boxShadow: "none",
@@ -85,7 +86,7 @@ export const Filter = () => {
               },
             }}
           >
-            <DoneIcon />
+            <DoneIcon sx={{ color: theme.bgTextPrimary }} />
           </Button>
         </Stack>
       </FilterWrapper>

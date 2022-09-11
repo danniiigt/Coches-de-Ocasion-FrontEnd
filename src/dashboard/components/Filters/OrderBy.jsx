@@ -5,6 +5,7 @@ import { setOrderBy } from "../../../store/cars";
 
 export const OrderBy = () => {
   const dispatch = useDispatch();
+  const { theme } = useSelector((state) => state.theme);
   const { orderBy } = useSelector((state) => state.cars);
 
   const handleOrderChange = (event) => {
@@ -16,7 +17,12 @@ export const OrderBy = () => {
       labelId="demo-simple-select-label"
       id="demo-simple-select"
       value={orderBy}
-      sx={{ width: "100%", backgroundColor: "white", borderRadius: "6px" }}
+      sx={{
+        width: "100%",
+        backgroundColor: theme.bgSecondary,
+        color: theme.textSecondary,
+        borderRadius: "6px",
+      }}
       onChange={handleOrderChange}
     >
       <MenuItem value={"recent"}>Más recientes</MenuItem>

@@ -9,11 +9,28 @@ import {
 } from "@mui/material";
 import HelpOutlineRoundedIcon from "@mui/icons-material/HelpOutlineRounded";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
+import LightModeIcon from "@mui/icons-material/LightMode";
+import Brightness4Icon from "@mui/icons-material/Brightness4";
 import backSearch from "../../assets/backSearch.png";
+import backSearchDark from "../../assets/backSearchDark.png";
 import { BrandCarousel } from "./BrandCarousel";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { setDarkMode, setLightMode } from "../../store/theme/themeSlice";
 
 export const NavMenu = ({ bgTransparent }) => {
+  const { theme, type } = useSelector((state) => state.theme);
+  const dispatch = useDispatch();
+  console.log(type);
+
+  const handleSetLightMode = () => {
+    dispatch(setLightMode());
+  };
+
+  const handleSetDarkMode = () => {
+    dispatch(setDarkMode());
+  };
+
   if (!bgTransparent) {
     return (
       <Box
@@ -24,13 +41,14 @@ export const NavMenu = ({ bgTransparent }) => {
           margin: "0 0 10px 0",
           marginLeft: "auto",
           marginRight: "auto",
-          backgroundColor: "#f3f3f3",
+          backgroundColor: theme.bgPrimary,
           position: "sticky",
           top: 0,
           zIndex: 101,
         }}
       >
         <AppBar
+          enableColorOnDark={true}
           position="sticky"
           color="primary"
           sx={{
@@ -39,7 +57,8 @@ export const NavMenu = ({ bgTransparent }) => {
             alignItems: "center",
             boxShadow: "none",
             backgroundColor: "",
-            backgroundImage: `url(${backSearch})`,
+            backgroundImage:
+              type === "dark" ? `url(${backSearchDark})` : `url(${backSearch})`,
             backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
             backgroundPosition: " 0 -120px",
@@ -62,6 +81,15 @@ export const NavMenu = ({ bgTransparent }) => {
               <Link to="/">Coches de Ocasión</Link>
             </Typography>
             <Stack direction="row" spacing={3}>
+              {type === "dark" ? (
+                <IconButton color="inherit" onClick={handleSetLightMode}>
+                  <LightModeIcon />
+                </IconButton>
+              ) : (
+                <IconButton color="inherit" onClick={handleSetDarkMode}>
+                  <Brightness4Icon />
+                </IconButton>
+              )}
               <IconButton color="inherit">
                 <HelpOutlineRoundedIcon />
               </IconButton>
@@ -85,6 +113,7 @@ export const NavMenu = ({ bgTransparent }) => {
     return (
       <>
         <AppBar
+          enableColorOnDark
           position="sticky"
           color="primary"
           sx={{
@@ -94,11 +123,7 @@ export const NavMenu = ({ bgTransparent }) => {
             boxShadow: "none",
             paddingTop: 2,
             paddingBottom: 2,
-            backgroundColor: bgTransparent ? "transparent" : "",
-            backgroundImage: bgTransparent ? "" : `url(${backSearch})`,
-            backgroundSize: bgTransparent ? "" : "cover",
-            backgroundRepeat: bgTransparent ? "" : "no-repeat",
-            backgroundPosition: bgTransparent ? "" : " 0 -40px",
+            background: "transparent",
           }}
         >
           <Toolbar
@@ -113,6 +138,15 @@ export const NavMenu = ({ bgTransparent }) => {
               <Link to="/">Coches de Ocasión</Link>
             </Typography>
             <Stack direction="row" spacing={3}>
+              {type === "dark" ? (
+                <IconButton color="inherit" onClick={handleSetLightMode}>
+                  <LightModeIcon />
+                </IconButton>
+              ) : (
+                <IconButton color="inherit" onClick={handleSetDarkMode}>
+                  <Brightness4Icon />
+                </IconButton>
+              )}
               <IconButton color="inherit">
                 <HelpOutlineRoundedIcon />
               </IconButton>

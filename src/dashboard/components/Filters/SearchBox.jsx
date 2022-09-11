@@ -1,8 +1,11 @@
 import { Stack, TextField } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 import React from "react";
+import { useSelector } from "react-redux";
 
 export const SearchBox = () => {
+  const { theme } = useSelector((state) => state.theme);
+
   return (
     <>
       <Stack
@@ -22,9 +25,10 @@ export const SearchBox = () => {
           InputProps={{
             placeholder: "¿Que coche buscas?",
             style: {
-              backgroundColor: "white",
+              backgroundColor: theme.bgSecondary,
               borderRadius: "6px",
-              color: "#525252",
+              color: theme.textPrimary,
+              fontWeight: 300,
             },
             endAdornment: (
               <SendIcon

@@ -1,5 +1,5 @@
 import { Box, Divider, Stack, Typography } from "@mui/material";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { importSelectedCar } from "../../store/cars";
 import { CarImageCarousel } from "./CarImageCarousel";
 import { format } from "currency-formatter";
@@ -15,6 +15,7 @@ import Aos from "aos";
 import "aos/dist/aos.css";
 
 export const CarItem = ({ car, brandPage, index }) => {
+  const { theme } = useSelector((state) => state.theme);
   const dispatch = useDispatch();
   const indexesAnimated = [0, 1, 2, 3, 4];
   const combustionTypes = [
@@ -51,8 +52,8 @@ export const CarItem = ({ car, brandPage, index }) => {
             display: "flex",
             cursor: "pointer",
             width: "100%",
-            backgroundColor: "white",
-            border: "1px solid #dddddd",
+            backgroundColor: theme.bgSecondary,
+            border: `1px solid ${theme.borderColor}`,
             position: "relative",
 
             "&:hover": {
