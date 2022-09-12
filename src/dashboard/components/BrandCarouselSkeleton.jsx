@@ -15,17 +15,17 @@ export const BrandCarouselSkeleton = () => {
           height={40}
           sx={{ ml: 2, mr: 3, cursor: "pointer" }}
         />
-        <Skeleton width={90} height={40} sx={{ mr: 3 }} />
-        <Skeleton width={90} height={40} sx={{ mr: 3 }} />
-        <Skeleton width={90} height={40} sx={{ mr: 3 }} />
-        <Skeleton width={90} height={40} sx={{ mr: 3 }} />
-        <Skeleton width={90} height={40} sx={{ mr: 3 }} />
-        <Skeleton width={90} height={40} sx={{ mr: 3 }} />
-        <Skeleton width={90} height={40} sx={{ mr: 3 }} />
-        <Skeleton width={90} height={40} animation="wave" sx={{ mr: 3 }} />
-        <Skeleton width={90} height={40} animation="wave" sx={{ mr: 3 }} />
-        <Skeleton width={90} height={40} animation="wave" sx={{ mr: 3 }} />
-        <Skeleton width={90} height={40} animation="wave" sx={{ mr: 3 }} />
+        <Skeleton width={90} height={40} sx={{ mr: 3, cursor: "pointer" }} />
+        <Skeleton width={90} height={40} sx={{ mr: 3, cursor: "pointer" }} />
+        <Skeleton width={90} height={40} sx={{ mr: 3, cursor: "pointer" }} />
+        <Skeleton width={90} height={40} sx={{ mr: 3, cursor: "pointer" }} />
+        <Skeleton width={90} height={40} sx={{ mr: 3, cursor: "pointer" }} />
+        <Skeleton width={90} height={40} sx={{ mr: 3, cursor: "pointer" }} />
+        <Skeleton width={90} height={40} sx={{ mr: 3, cursor: "pointer" }} />
+        <Skeleton width={90} height={40} sx={{ mr: 3, cursor: "pointer" }} />
+        <Skeleton width={90} height={40} sx={{ mr: 3, cursor: "pointer" }} />
+        <Skeleton width={90} height={40} sx={{ mr: 3, cursor: "pointer" }} />
+        <Skeleton width={90} height={40} sx={{ mr: 3, cursor: "pointer" }} />
       </ScrollingCarousel>
     </>
   );

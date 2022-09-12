@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const lsMode = localStorage.getItem("mode");
+console.log(lsMode);
 let initialState = {
   type: "light",
   theme: {
@@ -70,7 +71,7 @@ export const themeSlice = createSlice({
         bgTextPrimary: "#eeee",
         bgTextSecondary: "white",
       };
-      localStorage.setItem("mode", "dark");
+      localStorage.setItem("mode", "light");
     },
   },
 });

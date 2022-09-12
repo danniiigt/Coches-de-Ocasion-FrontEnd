@@ -17,6 +17,7 @@ const initialState = {
     priceMax: 500000,
     yearMin: 1975,
     yearMax: actualYear,
+    brands: [],
     // brand: null,
     // gearBox: null,
     hpMin: 0,

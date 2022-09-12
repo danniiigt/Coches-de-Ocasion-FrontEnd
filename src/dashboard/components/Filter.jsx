@@ -64,6 +64,7 @@ export const Filter = () => {
 
               "&:hover": {
                 boxShadow: "none",
+                backgroundColor: theme.bgPrimary,
               },
             }}
           >

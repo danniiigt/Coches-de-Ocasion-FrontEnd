@@ -1,11 +1,17 @@
 import { MenuItem, Select } from "@mui/material";
-import { useState } from "react";
+import { useContext, useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import { AccordionWrapper } from "..";
 import { useFetch } from "../../../hooks/useFetch";
+import { FilterContext } from "./context/FilterContext";
 
 export const BrandSelect = () => {
+  const { filterQuery } = useSelector((state) => state.cars);
+  const { brands } = filterQuery;
   const [openSelect, setOpenSelect] = useState(false);
-  const [selectedBrand, setSelectedBrand] = useState([]);
+  const [selectedBrand, setSelectedBrand] = useState(brands);
+  const { notAppliedFilterQuery, setNotAppliedFilterQuery } =
+    useContext(FilterContext);
 
   const { data, isLoading, hasError } = useFetch(
     `${import.meta.env.VITE_RESTSERVER_URL}/api/brands`
@@ -24,6 +30,13 @@ export const BrandSelect = () => {
       typeof value === "string" ? value.split(",") : value
     );
   };
+
+  useEffect(() => {
+    setNotAppliedFilterQuery({
+      ...notAppliedFilterQuery,
+      brands: selectedBrand,
+    });
+  }, [selectedBrand]);
 
   return (
     <AccordionWrapper
