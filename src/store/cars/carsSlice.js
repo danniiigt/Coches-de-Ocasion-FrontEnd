@@ -51,6 +51,9 @@ export const carsSlice = createSlice({
     setSelectedCar: (state, action) => {
       state.selectedCar = action.payload;
     },
+    closeSelectedCar: (state, action) => {
+      state.selectedCar = null;
+    },
     resetFilterQuery: (state, action) => {
       state.filterQuery = initialState.filterQuery;
     },
@@ -69,6 +72,7 @@ export const {
   setLoading,
   setPage,
   setSelectedCar,
+  closeSelectedCar,
   resetFilterQuery,
   setFilterQuery,
 } = carsSlice.actions;

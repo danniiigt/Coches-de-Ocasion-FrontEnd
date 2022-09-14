@@ -6,17 +6,19 @@ import {
   Typography,
   IconButton,
   Box,
+  Tooltip,
 } from "@mui/material";
-import HelpOutlineRoundedIcon from "@mui/icons-material/HelpOutlineRounded";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import Brightness4Icon from "@mui/icons-material/Brightness4";
 import backSearch from "../../assets/backSearch.png";
 import backSearchDark from "../../assets/backSearchDark.png";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { BrandCarousel } from "./BrandCarousel";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setDarkMode, setLightMode } from "../../store/theme/themeSlice";
+import Brightness3Icon from "@mui/icons-material/Brightness3";
 
 export const NavMenu = ({ bgTransparent }) => {
   const { theme, type } = useSelector((state) => state.theme);
@@ -81,27 +83,28 @@ export const NavMenu = ({ bgTransparent }) => {
             </Typography>
             <Stack direction="row" spacing={3}>
               {type === "dark" ? (
-                <IconButton color="inherit" onClick={handleSetLightMode}>
-                  <LightModeIcon />
-                </IconButton>
+                <Tooltip title="Modo Dia">
+                  <IconButton color="inherit" onClick={handleSetLightMode}>
+                    <LightModeIcon />
+                  </IconButton>
+                </Tooltip>
               ) : (
-                <IconButton color="inherit" onClick={handleSetDarkMode}>
-                  <Brightness4Icon />
-                </IconButton>
+                <Tooltip title="Modo Noche">
+                  <IconButton color="inherit" onClick={handleSetDarkMode}>
+                    <Brightness3Icon />
+                  </IconButton>
+                </Tooltip>
               )}
-              <IconButton color="inherit">
-                <HelpOutlineRoundedIcon />
-              </IconButton>
-              <IconButton color="inherit">
-                <NotificationsNoneIcon />
-              </IconButton>
-              <Button
-                color="secondary"
-                variant="contained"
-                sx={{ boxShadow: "none" }}
-              >
-                REGISTRATE
-              </Button>
+              <Tooltip title="Notificaciones">
+                <IconButton color="inherit">
+                  <NotificationsNoneIcon />
+                </IconButton>
+              </Tooltip>
+              <Tooltip title="Perfil">
+                <IconButton color="inherit">
+                  <AccountCircleIcon />
+                </IconButton>
+              </Tooltip>
             </Stack>
           </Toolbar>
         </AppBar>
@@ -138,26 +141,34 @@ export const NavMenu = ({ bgTransparent }) => {
             </Typography>
             <Stack direction="row" spacing={3}>
               {type === "dark" ? (
-                <IconButton color="inherit" onClick={handleSetLightMode}>
-                  <LightModeIcon />
-                </IconButton>
+                <Tooltip title="Modo Dia">
+                  <IconButton color="inherit" onClick={handleSetLightMode}>
+                    <LightModeIcon />
+                  </IconButton>
+                </Tooltip>
               ) : (
-                <IconButton color="inherit" onClick={handleSetDarkMode}>
-                  <Brightness4Icon />
-                </IconButton>
+                <Tooltip title="Modo Noche">
+                  <IconButton color="inherit" onClick={handleSetDarkMode}>
+                    <Brightness4Icon />
+                  </IconButton>
+                </Tooltip>
               )}
-              <IconButton color="inherit">
-                <HelpOutlineRoundedIcon />
-              </IconButton>
-              <IconButton color="inherit">
-                <NotificationsNoneIcon />
-              </IconButton>
+              <Tooltip title="Notificaciones">
+                <IconButton color="inherit">
+                  <NotificationsNoneIcon />
+                </IconButton>
+              </Tooltip>
+              <Tooltip title="Perfil">
+                <IconButton color="inherit">
+                  <AccountCircleIcon />
+                </IconButton>
+              </Tooltip>
               <Button
                 color="secondary"
                 variant="contained"
                 sx={{ boxShadow: "none" }}
               >
-                REGISTRATE
+                <Link to="/coches-segunda-mano">VER COCHES</Link>
               </Button>
             </Stack>
           </Toolbar>

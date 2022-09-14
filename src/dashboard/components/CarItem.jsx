@@ -1,4 +1,4 @@
-import { Box, Divider, Stack, Typography } from "@mui/material";
+import { Box, Stack, Typography } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { importSelectedCar } from "../../store/cars";
 import { CarImageCarousel } from "./CarImageCarousel";
