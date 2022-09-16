@@ -20,7 +20,7 @@ if (lsMode === "dark") {
     theme: {
       bgPrimary: "#0c0c0c",
       bgSecondary: "#1c1c1c",
-      borderColor: "#363636",
+      borderColor: "#424242",
       textPrimary: "#e1e1e1",
       textSecondary: "white",
       bgTextPrimary: "#eeee",

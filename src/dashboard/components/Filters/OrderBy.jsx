@@ -24,6 +24,7 @@ export const OrderBy = () => {
         borderRadius: "6px",
       }}
       onChange={handleOrderChange}
+      size="small"
     >
       <MenuItem value={"recent"}>Más recientes</MenuItem>
       <MenuItem value={"price-desc"}>Más caros</MenuItem>

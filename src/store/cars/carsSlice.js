@@ -10,6 +10,7 @@ const initialState = {
   orderBy: null,
   total: null,
   cars: null,
+  view: localStorage.getItem("view") || "linear",
   filterQuery: {
     kmMin: 0,
     kmMax: 500000,
@@ -63,6 +64,12 @@ export const carsSlice = createSlice({
         ...action.payload,
       };
     },
+    setLinearView: (state, action) => {
+      (state.view = "linear"), localStorage.setItem("view", "linear");
+    },
+    setBlockView: (state, action) => {
+      (state.view = "block"), localStorage.setItem("view", "block");
+    },
   },
 });
 
@@ -75,4 +82,6 @@ export const {
   closeSelectedCar,
   resetFilterQuery,
   setFilterQuery,
+  setLinearView,
+  setBlockView,
 } = carsSlice.actions;

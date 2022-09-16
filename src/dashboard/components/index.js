@@ -15,6 +15,9 @@ export * from "./FilterWrapper";
 export * from "./FilterSkeleton";
 export * from "./CarsHeader";
 export * from "./NoCarsFound";
+export * from "./CarsAside";
+export * from "./CarsViewModule";
+export * from "./CarItemVertical";
 
 //SLIDERS
 export * from "./Filters/KilometersSlider";

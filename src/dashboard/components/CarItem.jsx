@@ -17,7 +17,7 @@ import "aos/dist/aos.css";
 export const CarItem = ({ car, brandPage, index }) => {
   const { theme } = useSelector((state) => state.theme);
   const dispatch = useDispatch();
-  const indexesAnimated = [0, 1, 2, 3, 4];
+  const indexesAnimated = [0, 1, 2, 3, 4, 5, 6];
   const combustionTypes = [
     "Gasolina",
     "Diesel",

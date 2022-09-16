@@ -1,21 +1,20 @@
-import { Pagination, Stack, Typography } from "@mui/material";
+import { Box, Pagination, Stack, Typography } from "@mui/material";
 import { useSelector } from "react-redux";
 import {
   CarItem,
   CarsWrapper,
   CarsSkeleton,
-  Filter,
-  SearchBox,
-  OrderBy,
   NoCarsFound,
+  CarsViewModule,
 } from "./";
 import { setPage } from "../../store/cars";
 import { useDispatch } from "react-redux";
 import { FilterProvider } from "./Filters/context/FilterProvider";
+import { CarsAside } from "./CarsAside";
 
 export const Cars = ({ brandPage, noMarginTop }) => {
   const dispatch = useDispatch();
-  const { isLoading, cars, page, maxPages } = useSelector(
+  const { isLoading, cars, page, maxPages, view } = useSelector(
     (state) => state.cars
   );
 
@@ -43,23 +42,21 @@ export const Cars = ({ brandPage, noMarginTop }) => {
             className="animate__animated animate__fadeIn"
           >
             {cars.length >= 1 &&
+              view === "linear" &&
               cars.map((car, i) => (
                 <CarItem
-                  key={car._id}
+                  key={car.uid}
                   index={i}
                   car={car}
                   brandPage={brandPage}
                 />
               ))}
+            {cars.length >= 1 && view === "block" && (
+              <CarsViewModule cars={cars} />
+            )}
             {cars.length === 0 && <NoCarsFound />}
           </Stack>
-          <Stack sx={{ width: "20%" }} spacing={2}>
-            <OrderBy />
-            <SearchBox />
-            <FilterProvider>
-              <Filter />
-            </FilterProvider>
-          </Stack>
+          <CarsAside />
         </Stack>
 
         {maxPages === 0 ||
