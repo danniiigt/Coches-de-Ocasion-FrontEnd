@@ -37,7 +37,7 @@ export const Cars = ({ brandPage, noMarginTop }) => {
       <CarsWrapper noMarginTop={noMarginTop}>
         <Stack direction={{xs: "column-reverse", md: "row"}} spacing={3}>
           <Stack
-            sx={{ width: {xs: "100%", md: "80%"} }}
+            sx={{ width: {xs: "100%", md: "78%"} }}
             spacing={3}
             className="animate__animated animate__fadeIn"
           >

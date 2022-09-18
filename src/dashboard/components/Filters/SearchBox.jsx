@@ -14,8 +14,9 @@ export const SearchBox = () => {
           display: "flex",
           alignItems: "center",
           height: 56,
-          position: {xs: "", sm: "sticky"},
+          position: {xs: "", md: "sticky"},
           top: 99,
+          width: "100%",
         }}
       >
         <TextField

@@ -51,7 +51,7 @@ export const CarItem = ({ car, brandPage, index }) => {
           sx={{
             border: "1px solid #eee",
             borderRadius: 3,
-            height: { xl: 200, lg: 230 },
+            height: 200,
             display: "flex",
             cursor: "pointer",
             width: "100%",
@@ -111,7 +111,7 @@ export const CarItem = ({ car, brandPage, index }) => {
             <Typography variant="h5" noWrap gutterBottom>
               {car.title}
             </Typography>
-            <Stack direction="row" spacing={3} mt={2}>
+            <Stack direction="row" spacing={3} mt={2} className="scrollingCarousel">
               <Stack direction="row">
                 <Typography variant="h7" fontWeight={300} noWrap>
                   <LocationOnIcon
