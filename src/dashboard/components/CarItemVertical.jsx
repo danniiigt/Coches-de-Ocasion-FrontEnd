@@ -77,7 +77,7 @@ export const CarItemVertical = ({ car, index }) => {
               {format(car.price, { code: "EUR" })}
             </Typography>
           </Stack>
-          <Stack direction="row" spacing={2} sx={{ mt: 2, ml: -0.3 }}>
+          <Stack direction="row" className="scrollingCarousel" spacing={2} sx={{ mt: 2, ml: -0.3, overflow: "scroll", "&::-webkit-scrollbar": {width: 0,height: 0} }}>
             <Stack direction="row">
               <Typography variant="body2" fontWeight={300} noWrap>
                 <LocationOnIcon

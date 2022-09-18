@@ -12,6 +12,7 @@ import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import Brightness4Icon from "@mui/icons-material/Brightness4";
 import backSearch from "../../assets/backSearch.png";
+import backSearch2 from "../../assets/backSearch2.png";
 import backSearchDark from "../../assets/backSearchDark.png";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { BrandCarousel } from "./BrandCarousel";
@@ -37,7 +38,7 @@ export const NavMenu = ({ bgTransparent }) => {
       <Box
         sx={{
           maxWidth: "1300px",
-          width: "93%",
+          width: "94%",
           padding: "15px 0 10px 0",
           margin: "0 0 10px 0",
           marginLeft: "auto",
@@ -58,8 +59,7 @@ export const NavMenu = ({ bgTransparent }) => {
             alignItems: "center",
             boxShadow: "none",
             backgroundColor: "",
-            backgroundImage:
-              type === "dark" ? `url(${backSearchDark})` : `url(${backSearch})`,
+            backgroundImage: `url(${backSearch2})`,
             backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
             backgroundPosition: " 0 -120px",

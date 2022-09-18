@@ -7,7 +7,7 @@ export const CarsViewModule = ({ cars }) => {
     <>
       <Grid container spacing={3}>
         {cars.map((car, i) => (
-          <Grid item xs={4} key={car.uid}>
+          <Grid item xs={12} lg={4} md={6} sm={6}  key={car.uid}>
             <CarItemVertical car={car} index={i} />
           </Grid>
         ))}

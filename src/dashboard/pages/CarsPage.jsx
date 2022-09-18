@@ -8,8 +8,6 @@ export const CarsPage = () => {
   const { page, orderBy, filterQuery } = useSelector((state) => state.cars);
 
   useEffect(() => {
-    console.log("Algo cambio!");
-    console.log({ page, orderBy, filterQuery });
     dispatch(importCars(page || 1, 15, null, orderBy || "recent", filterQuery));
   }, [page, orderBy, filterQuery]);
 

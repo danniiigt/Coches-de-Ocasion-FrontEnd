@@ -14,7 +14,7 @@ export const SearchBox = () => {
           display: "flex",
           alignItems: "center",
           height: 56,
-          position: "sticky",
+          position: {xs: "", sm: "sticky"},
           top: 99,
         }}
       >
