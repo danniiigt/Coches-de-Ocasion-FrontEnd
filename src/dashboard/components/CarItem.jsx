@@ -13,10 +13,12 @@ import StarBorderIcon from "@mui/icons-material/StarBorder";
 import DirectionsCarFilledOutlinedIcon from "@mui/icons-material/DirectionsCarFilledOutlined";
 import Aos from "aos";
 import "aos/dist/aos.css";
+import { useNavigate } from "react-router-dom";
 
 export const CarItem = ({ car, brandPage, index }) => {
   const { theme } = useSelector((state) => state.theme);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const indexesAnimated = [0, 1, 2, 3, 4, 5, 6];
   const combustionTypes = [
     "Gasolina",
@@ -33,6 +35,7 @@ export const CarItem = ({ car, brandPage, index }) => {
     const carId = car.uid;
     console.log(car);
     dispatch(importSelectedCar(carId));
+    navigate(`/coches-segunda-mano/${carId}`);
   };
 
   return (

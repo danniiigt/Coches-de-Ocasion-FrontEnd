@@ -6,7 +6,6 @@ export const CarsSkeleton = () => {
   const { view } = useSelector((state) => state.cars);
 
   if (view === "block") {
-    console.log("bien");
     return (
       <>
         <CarsWrapper noMarginTop={true}>

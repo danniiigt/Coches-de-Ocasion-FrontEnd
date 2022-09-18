@@ -3,7 +3,6 @@ import React from "react";
 import { CarItemVertical } from "./";
 
 export const CarsViewModule = ({ cars }) => {
-  console.log(cars);
   return (
     <>
       <Grid container spacing={3}>

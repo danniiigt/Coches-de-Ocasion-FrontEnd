@@ -1,6 +1,8 @@
 import { Box, Stack, Typography } from "@mui/material";
 import { format } from "currency-formatter";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { importSelectedCar } from "../../store/cars";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import EditRoadIcon from "@mui/icons-material/EditRoad";
@@ -8,6 +10,8 @@ import VerifiedIcon from "@mui/icons-material/Verified";
 
 export const CarItemVertical = ({ car, index }) => {
   const { theme } = useSelector((state) => state.theme);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const indexesAnimated = [0, 1, 2, 3, 4, 5, 6, 7, 8];
   const combustionTypes = [
     "Gasolina",
@@ -15,6 +19,13 @@ export const CarItemVertical = ({ car, index }) => {
     "Híbrido",
     "Gas natural (CNG)",
   ];
+
+  const handleSelectCar = () => {
+    const carId = car.uid;
+    console.log(car);
+    dispatch(importSelectedCar(carId));
+    navigate(`/coches-segunda-mano/${carId}`);
+  };
 
   return (
     <>
@@ -28,7 +39,12 @@ export const CarItemVertical = ({ car, index }) => {
           cursor: "pointer",
           display: "flex",
           flexDirection: "column",
+
+          "&:hover": {
+            border: "1px solid #2462FD",
+          },
         }}
+        onClick={handleSelectCar}
         className={
           indexesAnimated.includes(index)
             ? `animate__animated animate__fadeIn delay${index}`
