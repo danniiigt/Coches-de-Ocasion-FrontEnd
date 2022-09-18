@@ -36,6 +36,10 @@
   /* border-radius: 6px; */
 }
 
+form.formSearch {
+  width: 100%;
+}
+
 ul {
   padding: 0;
   list-style: none;

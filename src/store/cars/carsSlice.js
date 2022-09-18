@@ -12,6 +12,7 @@ const initialState = {
   cars: null,
   view: localStorage.getItem("view") || "linear",
   filterQuery: {
+    search: "",
     kmMin: 0,
     kmMax: 500000,
     priceMin: 0,
@@ -70,6 +71,9 @@ export const carsSlice = createSlice({
     setBlockView: (state, action) => {
       (state.view = "block"), localStorage.setItem("view", "block");
     },
+    setSearch: (state, action) => {
+      state.filterQuery.search = action.payload
+    }
   },
 });
 
@@ -84,4 +88,5 @@ export const {
   setFilterQuery,
   setLinearView,
   setBlockView,
+  setSearch,
 } = carsSlice.actions;

@@ -44,6 +44,9 @@ export const CarsSkeleton = () => {
               <Grid item xs={12} lg={4} md={6} sm={6}>
                 <CarSkeleton />
               </Grid>
+              <Grid item xs={12} lg={4} md={6} sm={6}>
+                <CarSkeleton />
+              </Grid>
             </Grid>
 
             <Box sx={{ width: { xs: "0", md: "27%" }, display: {xs: "none", md: "block"} }}>

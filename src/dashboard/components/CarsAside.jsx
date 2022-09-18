@@ -1,4 +1,4 @@
-import { Accordion, AccordionDetails, AccordionSummary, Box, IconButton, Stack, Typography } from "@mui/material";
+import { Accordion, AccordionDetails, AccordionSummary, Box, IconButton, Stack, Tooltip, Typography } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { OrderBy, Filter, SearchBox } from "./";
 import { FilterProvider } from "./Filters/context/FilterProvider";
@@ -18,8 +18,8 @@ export const CarsAside = () => {
 
   if (matches900w) {
     return (
-      <Stack spacing={2} sx={{width: "21%"}}>
-        <Stack direction={{xs: "column", lg: "row"}} spacing={1.5}>
+      <Stack spacing={2} sx={{ width: "21%" }}>
+        <Stack direction={{ xs: "column", lg: "row" }} spacing={1.5}>
           <Box
             sx={{
               display: "flex",
@@ -31,12 +31,16 @@ export const CarsAside = () => {
               border: `1px solid ${theme.borderColor}`,
             }}
           >
-            <IconButton onClick={() => dispatch(setLinearView())}>
-              <ViewListIcon />
-            </IconButton>
-            <IconButton onClick={() => dispatch(setBlockView())}>
-              <ViewModuleIcon />
-            </IconButton>
+            <Tooltip title="Ver en lista">
+              <IconButton onClick={() => dispatch(setLinearView())}>
+                <ViewListIcon />
+              </IconButton>
+            </Tooltip>
+            <Tooltip title="Ver en bloque">
+              <IconButton onClick={() => dispatch(setBlockView())}>
+                <ViewModuleIcon />
+              </IconButton>
+            </Tooltip>
           </Box>
           <OrderBy />
         </Stack>
@@ -46,7 +50,7 @@ export const CarsAside = () => {
         </FilterProvider>
       </Stack>
     )
-  } else {    
+  } else {
     dispatch(setBlockView())
     return (
       <Accordion sx={{ width: { xs: "100%", md: "20%" }, background: "transparent", boxShadow: "none", "&::before": { opacity: 0 } }}>
@@ -60,10 +64,10 @@ export const CarsAside = () => {
         </AccordionSummary>
         <AccordionDetails sx={{ mb: 3, p: 0, paddingTop: 2 }}>
           <Stack spacing={2}>
-            <Stack direction="row" spacing={{xs: 0, md: 1.5}}>
+            <Stack direction="row" spacing={{ xs: 0, md: 1.5 }}>
               <Box
                 sx={{
-                  display: {xs: "none", md: "flex"},
+                  display: { xs: "none", md: "flex" },
                   alignItems: "center",
                   justifyContent: "center",
                   backgroundColor: theme.bgSecondary,
