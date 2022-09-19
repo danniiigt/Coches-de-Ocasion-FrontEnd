@@ -1,37 +1,12 @@
-import {
-  AppBar,
-  Button,
-  Stack,
-  Toolbar,
-  Typography,
-  IconButton,
-  Box,
-  Tooltip,
-} from "@mui/material";
-import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
-import LightModeIcon from "@mui/icons-material/LightMode";
-import Brightness4Icon from "@mui/icons-material/Brightness4";
-import backSearch from "../../assets/backSearch.png";
 import backSearch2 from "../../assets/backSearch2.png";
-import backSearchDark from "../../assets/backSearchDark.png";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import { AppBar, Toolbar, Typography, Box } from "@mui/material";
 import { BrandCarousel } from "./BrandCarousel";
 import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { setDarkMode, setLightMode } from "../../store/theme/themeSlice";
-import Brightness3Icon from "@mui/icons-material/Brightness3";
+import { useSelector } from "react-redux";
+import { NavMenuIcons } from "./NavMenuIcons";
 
 export const NavMenu = ({ bgTransparent }) => {
-  const { theme, type } = useSelector((state) => state.theme);
-  const dispatch = useDispatch();
-
-  const handleSetLightMode = () => {
-    dispatch(setLightMode());
-  };
-
-  const handleSetDarkMode = () => {
-    dispatch(setDarkMode());
-  };
+  const { theme } = useSelector((state) => state.theme);
 
   if (!bgTransparent) {
     return (
@@ -64,8 +39,6 @@ export const NavMenu = ({ bgTransparent }) => {
             backgroundRepeat: "no-repeat",
             backgroundPosition: " 0 -120px",
             width: "100%",
-            // marginTop: 1,
-            // marginBottom: 4,
             borderRadius: 3,
             top: 10,
           }}
@@ -81,34 +54,9 @@ export const NavMenu = ({ bgTransparent }) => {
             <Typography variant="h4" color="white" flexGrow={1}>
               <Link to="/">Coches de Ocasión</Link>
             </Typography>
-            <Stack direction="row" spacing={3}>
-              {type === "dark" ? (
-                <Tooltip title="Modo Dia">
-                  <IconButton color="inherit" onClick={handleSetLightMode}>
-                    <LightModeIcon />
-                  </IconButton>
-                </Tooltip>
-              ) : (
-                <Tooltip title="Modo Noche">
-                  <IconButton color="inherit" onClick={handleSetDarkMode}>
-                    <Brightness3Icon />
-                  </IconButton>
-                </Tooltip>
-              )}
-              <Tooltip title="Notificaciones">
-                <IconButton color="inherit">
-                  <NotificationsNoneIcon />
-                </IconButton>
-              </Tooltip>
-              <Tooltip title="Perfil">
-                <IconButton color="inherit">
-                  <AccountCircleIcon />
-                </IconButton>
-              </Tooltip>
-            </Stack>
+            <NavMenuIcons />
           </Toolbar>
         </AppBar>
-        {/* <BrandCarousel fullWidth /> */}
       </Box>
     );
   } else {
@@ -139,38 +87,7 @@ export const NavMenu = ({ bgTransparent }) => {
             <Typography variant="h4" color="white" flexGrow={1}>
               <Link to="/">Coches de Ocasión</Link>
             </Typography>
-            <Stack direction="row" spacing={3}>
-              {type === "dark" ? (
-                <Tooltip title="Modo Dia">
-                  <IconButton color="inherit" onClick={handleSetLightMode}>
-                    <LightModeIcon />
-                  </IconButton>
-                </Tooltip>
-              ) : (
-                <Tooltip title="Modo Noche">
-                  <IconButton color="inherit" onClick={handleSetDarkMode}>
-                    <Brightness4Icon />
-                  </IconButton>
-                </Tooltip>
-              )}
-              <Tooltip title="Notificaciones">
-                <IconButton color="inherit">
-                  <NotificationsNoneIcon />
-                </IconButton>
-              </Tooltip>
-              <Tooltip title="Perfil">
-                <IconButton color="inherit">
-                  <AccountCircleIcon />
-                </IconButton>
-              </Tooltip>
-              <Button
-                color="secondary"
-                variant="contained"
-                sx={{ boxShadow: "none" }}
-              >
-                <Link to="/coches-segunda-mano">VER COCHES</Link>
-              </Button>
-            </Stack>
+            <NavMenuIcons showCarsButton />
           </Toolbar>
           <BrandCarousel />
         </AppBar>

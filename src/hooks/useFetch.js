@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export const useFetch = (url) => {
+export const useFetch = (url, fetchObject) => {
   const [dataState, setDataState] = useState({
     data: [],
     isLoading: true,
@@ -13,7 +13,7 @@ export const useFetch = (url) => {
       isLoading: true,
     });
 
-    const res = await fetch(url);
+    const res = await fetch(url, fetchObject);
     const data = await res.json();
 
     setDataState({

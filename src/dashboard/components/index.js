@@ -18,6 +18,7 @@ export * from "./NoCarsFound";
 export * from "./CarsAside";
 export * from "./CarsViewModule";
 export * from "./CarItemVertical";
+export * from "./NavMenuIcons";
 
 //SLIDERS
 export * from "./Filters/KilometersSlider";

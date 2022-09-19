@@ -1,9 +1,21 @@
+import { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import { AuthRouter } from "../auth/router/AuthRouter";
-import { HomePage, BrandPage, CarsPage, CarPage } from "../dashboard/pages";
+import { LoadingApp } from "../components/LoadingApp";
+import { HomePage, CarsPage, CarPage } from "../dashboard/pages";
+import { useAuthStore } from "../hooks/useAuthStore";
 
 export const AppRouter = () => {
-  const status = "not-authenticated";
+  const { status, checkAuthToken } = useAuthStore();
+  console.log(status);
+
+  useEffect(() => {
+    checkAuthToken();
+  }, []);
+
+  if (status === "checking") {
+    return <LoadingApp />;
+  }
 
   return (
     <>
@@ -13,7 +25,6 @@ export const AppRouter = () => {
             <Route path="/" element={<HomePage />} />
             <Route path="/coches-segunda-mano" element={<CarsPage />} />
             <Route path="/coches-segunda-mano/:carId" element={<CarPage />} />
-            <Route path="/:brand" element={<BrandPage />} />
             <Route path="/*" element={<AuthRouter />} />
           </>
         )}
