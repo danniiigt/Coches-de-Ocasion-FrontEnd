@@ -1,5 +1,10 @@
 import React from "react";
+import { PageWrapper } from "../ui";
 
 export const VerifyPage = () => {
-  return <div>VerifyPage</div>;
+  return (
+    <PageWrapper>
+      <h1>Verify</h1>
+    </PageWrapper>
+  );
 };

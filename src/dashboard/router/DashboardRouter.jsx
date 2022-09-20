@@ -1,14 +1,10 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import { BrandPage, CarPage, CarsPage, HomePage } from "../../dashboard/pages";
-import { LoginPage, RegisterPage, VerifyPage } from "../pages";
 
-export const AuthRouter = () => {
+export const DashboardRouter = () => {
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
-      <Route path="/iniciar-sesion" element={<LoginPage />} />
-      <Route path="/registro" element={<RegisterPage />} />
-      <Route path="/verify" element={<VerifyPage />} />
       <Route path="/coches-segunda-mano" element={<CarsPage />} />
       <Route path="/coches-segunda-mano/:carId" element={<CarPage />} />
       <Route

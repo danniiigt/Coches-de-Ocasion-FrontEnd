@@ -1,33 +1,18 @@
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 import LightModeIcon from "@mui/icons-material/LightMode";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import Brightness3Icon from "@mui/icons-material/Brightness3";
-import {
-  Button,
-  ButtonBase,
-  IconButton,
-  Menu,
-  MenuItem,
-  Stack,
-  Tooltip,
-} from "@mui/material";
+import AddIcon from "@mui/icons-material/Add";
+import InboxIcon from "@mui/icons-material/Inbox";
+import { Badge, Button, IconButton, Stack, Tooltip } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { setDarkMode, setLightMode } from "../../store/theme/themeSlice";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { ProfileMenu } from "./";
+import { useAuthStore } from "../../hooks/useAuthStore";
 
 export const NavMenuIcons = ({ showCarsButton }) => {
   const { type } = useSelector((state) => state.theme);
-  const [anchorEl, setAnchorEl] = useState(null);
-  const open = Boolean(anchorEl);
-
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
+  const { status } = useAuthStore();
 
   const dispatch = useDispatch();
 
@@ -41,6 +26,22 @@ export const NavMenuIcons = ({ showCarsButton }) => {
 
   return (
     <Stack direction="row" spacing={3}>
+      {status === "authenticated" && (
+        <>
+          <Tooltip title="Nuevo anuncio">
+            <IconButton color="inherit">
+              <AddIcon />
+            </IconButton>
+          </Tooltip>
+          <Tooltip title="Mensajes">
+            <IconButton color="inherit">
+              <Badge badgeContent={6} color="secondary">
+                <InboxIcon />
+              </Badge>
+            </IconButton>
+          </Tooltip>
+        </>
+      )}
       {type === "dark" ? (
         <Tooltip title="Modo Dia">
           <IconButton color="inherit" onClick={handleSetLightMode}>
@@ -54,42 +55,8 @@ export const NavMenuIcons = ({ showCarsButton }) => {
           </IconButton>
         </Tooltip>
       )}
-      <Tooltip title="Notificaciones">
-        <IconButton color="inherit">
-          <NotificationsNoneIcon />
-        </IconButton>
-      </Tooltip>
-      <Tooltip title="Perfil">
-        <IconButton color="inherit" onClick={handleClick}>
-          <AccountCircleIcon />
-        </IconButton>
-      </Tooltip>
-      <Menu
-        id="basic-menu"
-        anchorEl={anchorEl}
-        open={open}
-        onClose={handleClose}
-        MenuListProps={{
-          "aria-labelledby": "basic-button",
-        }}
-      >
-        <MenuItem
-          onClick={handleClose}
-          sx={{ "&:hover": { backgroundColor: "inherit" } }}
-        >
-          <Button fullWidth variant="outlined">
-            <Link to="/iniciar-sesion">INICIAR SESION</Link>
-          </Button>
-        </MenuItem>
-        <MenuItem
-          onClick={handleClose}
-          sx={{ "&:hover": { backgroundColor: "inherit" } }}
-        >
-          <Button variant="contained" fullWidth>
-            <Link to="/registro">REGISTRARSE</Link>
-          </Button>
-        </MenuItem>
-      </Menu>
+      <ProfileMenu />
+
       {showCarsButton && (
         <Button
           color="secondary"
