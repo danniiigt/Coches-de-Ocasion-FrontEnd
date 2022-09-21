@@ -60,6 +60,7 @@ export const carsSlice = createSlice({
       state.filterQuery = initialState.filterQuery;
     },
     setFilterQuery: (state, action) => {
+      state.page = 1;
       state.filterQuery = {
         ...state.filterQuery,
         ...action.payload,
@@ -72,8 +73,9 @@ export const carsSlice = createSlice({
       (state.view = "block"), localStorage.setItem("view", "block");
     },
     setSearch: (state, action) => {
-      state.filterQuery.search = action.payload
-    }
+      state.page = 1;
+      state.filterQuery.search = action.payload;
+    },
   },
 });
 

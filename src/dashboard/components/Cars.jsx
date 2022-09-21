@@ -11,6 +11,7 @@ import { setPage } from "../../store/cars";
 import { useDispatch } from "react-redux";
 import { FilterProvider } from "./Filters/context/FilterProvider";
 import { CarsAside } from "./CarsAside";
+import { useEffect } from "react";
 
 export const Cars = ({ brandPage, noMarginTop }) => {
   const dispatch = useDispatch();
@@ -26,6 +27,13 @@ export const Cars = ({ brandPage, noMarginTop }) => {
     });
   };
 
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }, [cars]);
+
   if (isLoading) {
     return (
       <FilterProvider>
@@ -35,9 +43,9 @@ export const Cars = ({ brandPage, noMarginTop }) => {
   } else {
     return (
       <CarsWrapper noMarginTop={noMarginTop}>
-        <Stack direction={{xs: "column-reverse", md: "row"}} spacing={3}>
+        <Stack direction={{ xs: "column-reverse", md: "row" }} spacing={3}>
           <Stack
-            sx={{ width: {xs: "100%", md: "78%"} }}
+            sx={{ width: { xs: "100%", md: "78%" } }}
             spacing={3}
             className="animate__animated animate__fadeIn"
           >

@@ -35,6 +35,7 @@ export const CarItemVertical = ({ car, index }) => {
           borderRadius: "8px",
           border: `1px solid ${theme.borderColor}`,
           height: "100%",
+          maxHeight: 374,
           width: "100%",
           cursor: "pointer",
           display: "flex",
@@ -53,7 +54,7 @@ export const CarItemVertical = ({ car, index }) => {
       >
         <Box
           sx={{
-            height: "100%",
+            height: "66%",
             img: {
               height: "100%",
               width: "100%",
@@ -77,7 +78,17 @@ export const CarItemVertical = ({ car, index }) => {
               {format(car.price, { code: "EUR" })}
             </Typography>
           </Stack>
-          <Stack direction="row" className="scrollingCarousel" spacing={2} sx={{ mt: 2, ml: -0.3, overflow: "scroll", "&::-webkit-scrollbar": {width: 0,height: 0} }}>
+          <Stack
+            direction="row"
+            className="scrollingCarousel"
+            spacing={2}
+            sx={{
+              mt: 2,
+              ml: -0.3,
+              overflow: "scroll",
+              "&::-webkit-scrollbar": { width: 0, height: 0 },
+            }}
+          >
             <Stack direction="row">
               <Typography variant="body2" fontWeight={300} noWrap>
                 <LocationOnIcon

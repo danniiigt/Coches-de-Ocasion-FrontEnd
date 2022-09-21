@@ -25,19 +25,11 @@ export const Filter = () => {
   const handleSubmitChanges = () => {
     if (Object.keys(notAppliedFilterQuery).length > 0) {
       dispatch(setFilterQuery(notAppliedFilterQuery));
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
     }
   };
 
   const handleResetFilterQuery = () => {
     dispatch(resetFilterQuery());
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
   };
 
   return (

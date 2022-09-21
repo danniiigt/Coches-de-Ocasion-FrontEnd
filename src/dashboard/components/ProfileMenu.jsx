@@ -21,7 +21,6 @@ import HowToRegIcon from "@mui/icons-material/HowToReg";
 export const ProfileMenu = () => {
   const [anchorEl, setAnchorEl] = useState(null);
   const { status, logout, user } = useAuthStore();
-  console.log(user);
 
   const open = Boolean(anchorEl);
 
