@@ -1,5 +1,5 @@
 import React from "react";
 
 export const CarPage = () => {
-  return <div>CarPage</div>;
+  return <h1>CarPage</h1>;
 };

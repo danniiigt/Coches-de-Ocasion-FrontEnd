@@ -7,7 +7,7 @@ import {
   NoCarsFound,
   CarsViewModule,
 } from "./";
-import { setPage } from "../../store/cars";
+import { importCars, setPage } from "../../store/cars";
 import { useDispatch } from "react-redux";
 import { FilterProvider } from "./Filters/context/FilterProvider";
 import { CarsAside } from "./CarsAside";
@@ -15,15 +15,16 @@ import { useEffect } from "react";
 
 export const Cars = ({ brandPage, noMarginTop }) => {
   const dispatch = useDispatch();
-  const { isLoading, cars, page, maxPages, view } = useSelector(
-    (state) => state.cars
-  );
+  const { isLoading, cars, page, maxPages, view, filterQuery, orderBy } =
+    useSelector((state) => state.cars);
 
   const handlePaginationChange = (e, value) => {
     dispatch(setPage(value));
+    dispatch(
+      importCars(value || 1, 15, null, orderBy || "recent", filterQuery)
+    );
     window.scrollTo({
       top: 0,
-      behavior: "smooth",
     });
   };
 

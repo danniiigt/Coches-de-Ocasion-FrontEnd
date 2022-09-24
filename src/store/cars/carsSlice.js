@@ -28,7 +28,6 @@ const initialState = {
   },
   selectedCar: null,
 };
-
 export const carsSlice = createSlice({
   name: "cars",
   initialState,
@@ -57,6 +56,7 @@ export const carsSlice = createSlice({
       state.selectedCar = null;
     },
     resetFilterQuery: (state, action) => {
+      state.orderBy = "recent";
       state.filterQuery = initialState.filterQuery;
     },
     setFilterQuery: (state, action) => {

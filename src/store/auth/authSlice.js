@@ -20,7 +20,7 @@ export const authSlice = createSlice({
   initialState,
   reducers: {
     onChecking: (state, action) => {
-      state = initialState;
+      state.status = "checking";
     },
 
     onLogin: (state, { payload }) => {

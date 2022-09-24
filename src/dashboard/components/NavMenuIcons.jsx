@@ -58,13 +58,15 @@ export const NavMenuIcons = ({ showCarsButton }) => {
       <ProfileMenu />
 
       {showCarsButton && (
-        <Button
-          color="secondary"
-          variant="contained"
-          sx={{ boxShadow: "none" }}
-        >
-          <Link to="/coches-segunda-mano">VER COCHES</Link>
-        </Button>
+        <Link to="/coches-segunda-mano">
+          <Button
+            color="secondary"
+            variant="contained"
+            sx={{ boxShadow: "none" }}
+          >
+            VER COCHES
+          </Button>
+        </Link>
       )}
     </Stack>
   );

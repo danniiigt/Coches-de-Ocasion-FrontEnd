@@ -12,7 +12,12 @@ import {
 import DoneIcon from "@mui/icons-material/Done";
 import RestartAltIcon from "@mui/icons-material/RestartAlt";
 import { useDispatch, useSelector } from "react-redux";
-import { resetFilterQuery, setFilterQuery } from "../../store/cars";
+import {
+  importCars,
+  resetFilterQuery,
+  setFilterQuery,
+  setPage,
+} from "../../store/cars";
 import { FilterContext } from "./Filters/context/FilterContext";
 import { useContext } from "react";
 import { FilterProvider } from "./Filters/context/FilterProvider";
@@ -21,10 +26,15 @@ export const Filter = () => {
   const dispatch = useDispatch();
   const { theme } = useSelector((state) => state.theme);
   const { notAppliedFilterQuery } = useContext(FilterContext);
+  const { page, orderBy, filterQuery } = useSelector((state) => state.cars);
+  const date = new Date();
+  const actualYear = date.getFullYear();
 
   const handleSubmitChanges = () => {
     if (Object.keys(notAppliedFilterQuery).length > 0) {
       dispatch(setFilterQuery(notAppliedFilterQuery));
+      dispatch(setPage(1));
+
       window.scrollTo({
         top: 0,
         behavior: "smooth",
@@ -34,6 +44,23 @@ export const Filter = () => {
 
   const handleResetFilterQuery = () => {
     dispatch(resetFilterQuery());
+    dispatch(
+      importCars(page || 1, 15, null, "recent", {
+        search: "",
+        kmMin: 0,
+        kmMax: 500000,
+        priceMin: 0,
+        priceMax: 500000,
+        yearMin: 1975,
+        yearMax: actualYear,
+        brands: [],
+        // brand: null,
+        // gearBox: null,
+        hpMin: 0,
+        hpMax: 1000,
+        // doors: null,
+      })
+    );
     window.scrollTo({
       top: 0,
       behavior: "smooth",

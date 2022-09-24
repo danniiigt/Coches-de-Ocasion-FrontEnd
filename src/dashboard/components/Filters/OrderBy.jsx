@@ -1,15 +1,16 @@
 import { MenuItem, Select } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
 import React from "react";
-import { setOrderBy } from "../../../store/cars";
+import { setOrderBy, setPage } from "../../../store/cars";
 
 export const OrderBy = () => {
   const dispatch = useDispatch();
   const { theme } = useSelector((state) => state.theme);
-  const { orderBy } = useSelector((state) => state.cars);
+  const { orderBy, page, filterQuery } = useSelector((state) => state.cars);
 
   const handleOrderChange = (event) => {
     dispatch(setOrderBy(event.target.value));
+    dispatch(setPage(1));
   };
 
   return (

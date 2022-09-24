@@ -1,6 +1,6 @@
 import { Box, Grid, Stack } from "@mui/material";
 import { useSelector } from "react-redux";
-import { CarsWrapper, CarSkeleton, Filter, SearchBox } from "./";
+import { CarsWrapper, CarSkeleton, Filter, SearchBox, CarsAside } from "./";
 
 export const CarsSkeleton = () => {
   const { view } = useSelector((state) => state.cars);
@@ -9,8 +9,8 @@ export const CarsSkeleton = () => {
     return (
       <>
         <CarsWrapper noMarginTop={true}>
-          <Stack direction={{xs: "column-reverse", md: "row"}} spacing={3}>
-            <Grid container spacing={3} sx={{xs: "100%", md: "73%"}}>
+          <Stack direction={{ xs: "column-reverse", md: "row" }} spacing={3}>
+            <Grid container spacing={3} sx={{ xs: "100%", md: "73%" }}>
               <Grid item xs={12} lg={4} md={6} sm={6}>
                 <CarSkeleton />
               </Grid>
@@ -35,9 +35,7 @@ export const CarsSkeleton = () => {
               <Grid item xs={12} lg={4} md={6} sm={6}>
                 <CarSkeleton />
               </Grid>
-              <Grid item xs={12} lg={4} md={6} sm={6}>
-                <CarSkeleton />
-              </Grid>
+              <Grid item xs={12} lg={4} md={6} sm={6}></Grid>
               <Grid item xs={12} lg={4} md={6} sm={6}>
                 <CarSkeleton />
               </Grid>
@@ -49,7 +47,12 @@ export const CarsSkeleton = () => {
               </Grid>
             </Grid>
 
-            <Box sx={{ width: { xs: "0", md: "27%" }, display: {xs: "none", md: "block"} }}>
+            <Box
+              sx={{
+                width: { xs: "0", md: "27%" },
+                display: { xs: "none", md: "block" },
+              }}
+            >
               <SearchBox />
               <Filter />
             </Box>
@@ -61,8 +64,21 @@ export const CarsSkeleton = () => {
     return (
       <>
         <CarsWrapper noMarginTop={true}>
-          <Stack direction="row" spacing={3}>
-            <Stack sx={{ width: "80%" }} spacing={3}>
+          <Stack direction={{ xs: "column-reverse", md: "row" }} spacing={3}>
+            <Stack
+              sx={{ width: { xs: "100%", md: "78%" } }}
+              spacing={3}
+              className="animate__animated animate__fadeIn"
+            >
+              <CarSkeleton />
+              <CarSkeleton />
+              <CarSkeleton />
+              <CarSkeleton />
+              <CarSkeleton />
+              <CarSkeleton />
+              <CarSkeleton />
+              <CarSkeleton />
+              <CarSkeleton />
               <CarSkeleton />
               <CarSkeleton />
               <CarSkeleton />
@@ -73,11 +89,7 @@ export const CarsSkeleton = () => {
               <CarSkeleton />
               <CarSkeleton />
             </Stack>
-
-            <Box sx={{ width: "20%" }}>
-              <SearchBox />
-              <Filter />
-            </Box>
+            <CarsAside />
           </Stack>
         </CarsWrapper>
       </>

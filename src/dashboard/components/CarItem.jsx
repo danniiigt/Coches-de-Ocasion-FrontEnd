@@ -1,4 +1,4 @@
-import { Box, Stack, Typography } from "@mui/material";
+import { Box, IconButton, Stack, Typography } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { importSelectedCar } from "../../store/cars";
 import { CarImageCarousel } from "./CarImageCarousel";
@@ -13,7 +13,7 @@ import StarBorderIcon from "@mui/icons-material/StarBorder";
 import DirectionsCarFilledOutlinedIcon from "@mui/icons-material/DirectionsCarFilledOutlined";
 import Aos from "aos";
 import "aos/dist/aos.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 export const CarItem = ({ car, brandPage, index }) => {
   const { theme } = useSelector((state) => state.theme);
@@ -35,196 +35,210 @@ export const CarItem = ({ car, brandPage, index }) => {
     const carId = car.uid;
     console.log(car);
     dispatch(importSelectedCar(carId));
-    navigate(`/coches-segunda-mano/${carId}`);
+    // navigate(`/coches-segunda-mano/${carId}`);
   };
 
   return (
     <>
       {car.carData && car.carTags && (
-        <Box
-          onClick={() => handleSelectCar()}
-          className={
-            indexesAnimated.includes(index) &&
-            `animate__animated animate__fadeIn delay${index}`
-          }
-          data-aos={!indexesAnimated.includes(index) && "fade-right"}
-          sx={{
-            border: "1px solid #eee",
-            borderRadius: 3,
-            height: 200,
-            display: "flex",
-            cursor: "pointer",
-            width: "100%",
-            backgroundColor: theme.bgSecondary,
-            border: `1px solid ${theme.borderColor}`,
-            position: "relative",
-
-            "&:hover": {
-              border: "1px solid #2462FD",
-            },
-          }}
-        >
-          <StarBorderIcon
+        <Link to={`/coches-segunda-mano/${car.uid}`}>
+          <Box
+            onClick={() => handleSelectCar()}
+            className={
+              indexesAnimated.includes(index) &&
+              `animate__animated animate__fadeIn delay${index}`
+            }
+            data-aos={!indexesAnimated.includes(index) && "fade-right"}
             sx={{
-              position: "absolute",
-              top: 15,
-              right: 15,
-              color: "#7c7c7ced",
+              border: "1px solid #eee",
+              borderRadius: 3,
+              height: 200,
+              display: "flex",
+              cursor: "pointer",
+              width: "100%",
+              backgroundColor: theme.bgSecondary,
+              border: `1px solid ${theme.borderColor}`,
+              position: "relative",
+
               "&:hover": {
-                color: "primary.main",
+                border: "1px solid #2462FD",
               },
             }}
-          />
-          <Box
-            sx={{
-              minWidth: "23%",
-              height: "100%",
-              borderRadius: 3,
-            }}
           >
-            <CarImageCarousel carImages={car.images} />
-          </Box>
-          <Box
-            sx={{
-              width: "77%",
-              height: "100%",
-              boxSizing: "border-box",
-              p: 4,
-              paddingTop: 3,
-              paddingBottom: 3,
-            }}
-          >
-            <Typography
-              variant="h6"
+            <IconButton
               sx={{
-                span: {
-                  color: "primary.main",
-                  fontWeight: 600,
-                  fontSize: 22,
-                },
+                position: "absolute",
+                top: 15,
+                right: 15,
+                borderRadius: 2,
+                "&:hover": { svg: { color: "primary.main" } },
               }}
-              fontWeight={300}
-              gutterBottom
             >
-              Precio: <span>{format(car.price, { code: "EUR" })}</span>
-            </Typography>
-            <Typography variant="h5" noWrap gutterBottom>
-              {car.title}
-            </Typography>
-            <Stack direction="row" spacing={3} mt={2} className="scrollingCarousel">
-              <Stack direction="row">
-                <Typography variant="h7" fontWeight={300} noWrap>
-                  <LocationOnIcon
-                    fontSize="small"
-                    sx={{ mb: -0.5, mr: 1 }}
-                    color="primary"
-                  />
-                  {car.carTags.location}
-                </Typography>
+              <Link to={`/`}>
+                <StarBorderIcon
+                  sx={{
+                    color: "#7c7c7ced",
+                  }}
+                />
+              </Link>
+            </IconButton>
+
+            <Box
+              sx={{
+                minWidth: "23%",
+                height: "100%",
+                borderRadius: 3,
+              }}
+            >
+              <CarImageCarousel carImages={car.images} />
+            </Box>
+            <Box
+              sx={{
+                width: "77%",
+                height: "100%",
+                boxSizing: "border-box",
+                p: 4,
+                paddingTop: 3,
+                paddingBottom: 3,
+              }}
+            >
+              <Typography
+                variant="h6"
+                sx={{
+                  span: {
+                    color: "primary.main",
+                    fontWeight: 600,
+                    fontSize: 22,
+                  },
+                }}
+                fontWeight={300}
+                gutterBottom
+              >
+                Precio: <span>{format(car.price, { code: "EUR" })}</span>
+              </Typography>
+              <Typography variant="h5" noWrap gutterBottom>
+                {car.title}
+              </Typography>
+              <Stack
+                direction="row"
+                spacing={3}
+                mt={2}
+                className="scrollingCarousel"
+              >
+                <Stack direction="row">
+                  <Typography variant="h7" fontWeight={300} noWrap>
+                    <LocationOnIcon
+                      fontSize="small"
+                      sx={{ mb: -0.5, mr: 1 }}
+                      color="primary"
+                    />
+                    {car.carTags.location}
+                  </Typography>
+                </Stack>
+                <Stack direction="row">
+                  <Typography variant="h7" fontWeight={300} noWrap>
+                    <EditRoadIcon
+                      fontSize="small"
+                      sx={{ mb: -0.5, mr: 1 }}
+                      color="primary"
+                    />
+                    {car.carTags.kilometers}kms
+                  </Typography>
+                </Stack>
+                <Stack direction="row">
+                  <Typography variant="h7" fontWeight={300} noWrap>
+                    <CalendarTodayIcon
+                      fontSize="small"
+                      sx={{ mb: -0.5, mr: 1 }}
+                      color="primary"
+                    />
+                    {car.carTags.year}
+                  </Typography>
+                </Stack>
+                {car.carTags.combustion &&
+                combustionTypes.includes(car.carTags.combustion) ? (
+                  <Stack direction="row">
+                    <Typography variant="h7" fontWeight={300} noWrap>
+                      <LocalGasStationIcon
+                        fontSize="small"
+                        sx={{ mb: -0.5, mr: 1 }}
+                        color="primary"
+                      />
+                      {car.carTags.combustion}
+                    </Typography>
+                  </Stack>
+                ) : (
+                  <Stack direction="row">
+                    <Typography variant="h7" fontWeight={300} noWrap>
+                      <LocalGasStationIcon
+                        fontSize="small"
+                        sx={{ mb: -0.5, mr: 1 }}
+                        color="primary"
+                      />
+                      {car.carTags.emisions}
+                    </Typography>
+                  </Stack>
+                )}
+                {car.carData.averageConsumption && (
+                  <Stack direction="row">
+                    <Typography variant="h7" fontWeight={300} noWrap>
+                      <LocalGasStationIcon
+                        fontSize="small"
+                        sx={{ mb: -0.5, mr: 1 }}
+                        color="primary"
+                      />
+                      {car.carData.averageConsumption} media
+                    </Typography>
+                  </Stack>
+                )}
+                {!car.carData.averageConsumption && (
+                  <Stack direction="row">
+                    <Typography variant="h7" fontWeight={300} noWrap>
+                      <DirectionsCarFilledOutlinedIcon
+                        fontSize="small"
+                        sx={{ mb: -0.5, mr: 1 }}
+                        color="primary"
+                      />
+                      {car.carTags.type}
+                    </Typography>
+                  </Stack>
+                )}
               </Stack>
-              <Stack direction="row">
-                <Typography variant="h7" fontWeight={300} noWrap>
-                  <EditRoadIcon
-                    fontSize="small"
-                    sx={{ mb: -0.5, mr: 1 }}
-                    color="primary"
-                  />
-                  {car.carTags.kilometers}kms
-                </Typography>
-              </Stack>
-              <Stack direction="row">
-                <Typography variant="h7" fontWeight={300} noWrap>
-                  <CalendarTodayIcon
-                    fontSize="small"
-                    sx={{ mb: -0.5, mr: 1 }}
-                    color="primary"
-                  />
-                  {car.carTags.year}
-                </Typography>
-              </Stack>
-              {car.carTags.combustion &&
-              combustionTypes.includes(car.carTags.combustion) ? (
-                <Stack direction="row">
-                  <Typography variant="h7" fontWeight={300} noWrap>
-                    <LocalGasStationIcon
-                      fontSize="small"
-                      sx={{ mb: -0.5, mr: 1 }}
-                      color="primary"
-                    />
-                    {car.carTags.combustion}
-                  </Typography>
-                </Stack>
-              ) : (
-                <Stack direction="row">
-                  <Typography variant="h7" fontWeight={300} noWrap>
-                    <LocalGasStationIcon
-                      fontSize="small"
-                      sx={{ mb: -0.5, mr: 1 }}
-                      color="primary"
-                    />
-                    {car.carTags.emisions}
-                  </Typography>
-                </Stack>
-              )}
-              {car.carData.averageConsumption && (
-                <Stack direction="row">
-                  <Typography variant="h7" fontWeight={300} noWrap>
-                    <LocalGasStationIcon
-                      fontSize="small"
-                      sx={{ mb: -0.5, mr: 1 }}
-                      color="primary"
-                    />
-                    {car.carData.averageConsumption} media
-                  </Typography>
-                </Stack>
-              )}
-              {!car.carData.averageConsumption && (
-                <Stack direction="row">
-                  <Typography variant="h7" fontWeight={300} noWrap>
-                    <DirectionsCarFilledOutlinedIcon
-                      fontSize="small"
-                      sx={{ mb: -0.5, mr: 1 }}
-                      color="primary"
-                    />
-                    {car.carTags.type}
-                  </Typography>
-                </Stack>
-              )}
-            </Stack>
-            {/* 
+              {/* 
           <Stack direction="row" spacing={3} mt={2}>
         </Stack> */}
 
-            {car.carTags.warranty &&
-              car.carTags.warranty.startsWith("Garantía") && (
-                <Stack direction="row" mt={2}>
-                  <Typography variant="h7" fontWeight={300} noWrap>
-                    <VerifiedIcon
-                      fontSize="small"
-                      sx={{ mb: -0.5, mr: 1 }}
-                      color="success"
-                    />
+              {car.carTags.warranty &&
+                car.carTags.warranty.startsWith("Garantía") && (
+                  <Stack direction="row" mt={2}>
+                    <Typography variant="h7" fontWeight={300} noWrap>
+                      <VerifiedIcon
+                        fontSize="small"
+                        sx={{ mb: -0.5, mr: 1 }}
+                        color="success"
+                      />
 
-                    {car.carTags.warranty}
-                  </Typography>
-                </Stack>
-              )}
-            {car.carTags.combustion &&
-              !combustionTypes.includes(car.carTags.combustion) &&
-              car.carTags.combustion.startsWith("Garantía") && (
-                <Stack direction="row" mt={2}>
-                  <Typography variant="h7" fontWeight={300} noWrap>
-                    <VerifiedIcon
-                      fontSize="small"
-                      sx={{ mb: -0.5, mr: 1 }}
-                      color="success"
-                    />
-                    {car.carTags.combustion}
-                  </Typography>
-                </Stack>
-              )}
+                      {car.carTags.warranty}
+                    </Typography>
+                  </Stack>
+                )}
+              {car.carTags.combustion &&
+                !combustionTypes.includes(car.carTags.combustion) &&
+                car.carTags.combustion.startsWith("Garantía") && (
+                  <Stack direction="row" mt={2}>
+                    <Typography variant="h7" fontWeight={300} noWrap>
+                      <VerifiedIcon
+                        fontSize="small"
+                        sx={{ mb: -0.5, mr: 1 }}
+                        color="success"
+                      />
+                      {car.carTags.combustion}
+                    </Typography>
+                  </Stack>
+                )}
+            </Box>
           </Box>
-        </Box>
+        </Link>
       )}
     </>
   );

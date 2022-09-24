@@ -2,24 +2,32 @@ import { Stack, TextField } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setSearch } from "../../../store/cars";
+import { importCars, setSearch } from "../../../store/cars";
 import { useState } from "react";
 
 export const SearchBox = () => {
-  const dispatch = useDispatch()
-  const [searchValue, setSearchValue] = useState("")
+  const dispatch = useDispatch();
   const { theme } = useSelector((state) => state.theme);
+  const { filterQuery, page, orderBy } = useSelector((state) => state.cars);
+  const { search } = filterQuery;
+  const [searchValue, setSearchValue] = useState(search);
 
   const handleChange = (event) => {
     setSearchValue(event.target.value);
   };
 
   const handleSearch = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     if (searchValue !== "") {
-      dispatch(setSearch(searchValue))
+      dispatch(setSearch(searchValue));
+      dispatch(
+        importCars(1, 15, null, orderBy || "recent", {
+          ...filterQuery,
+          search: searchValue,
+        })
+      );
     }
-  }
+  };
 
   return (
     <>
@@ -62,7 +70,6 @@ export const SearchBox = () => {
             }}
           />
         </form>
-
       </Stack>
     </>
   );

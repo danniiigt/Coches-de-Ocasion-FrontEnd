@@ -22,7 +22,7 @@ export const BrandPage = () => {
 
   useEffect(() => {
     dispatch(resetFilterQuery());
-    dispatch(importCars(1, 15, brandName, orderBy || "recent", filterQuery));
+    // dispatch(importCars(1, 15, brandName, orderBy || "recent", filterQuery));
   }, [brandName]);
 
   return (
