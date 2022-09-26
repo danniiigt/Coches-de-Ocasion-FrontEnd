@@ -22,7 +22,6 @@ export const CarItemVertical = ({ car, index }) => {
 
   const handleSelectCar = () => {
     const carId = car.uid;
-    console.log(car);
     dispatch(importSelectedCar(carId));
     navigate(`/coches-segunda-mano/${carId}`);
   };

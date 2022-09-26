@@ -1,9 +1,9 @@
-import { Box, IconButton, Stack, Typography } from "@mui/material";
+import { Box, IconButton, Stack, Tooltip, Typography } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { importSelectedCar } from "../../store/cars";
 import { CarImageCarousel } from "./CarImageCarousel";
 import { format } from "currency-formatter";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import VerifiedIcon from "@mui/icons-material/Verified";
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
@@ -14,6 +14,7 @@ import DirectionsCarFilledOutlinedIcon from "@mui/icons-material/DirectionsCarFi
 import Aos from "aos";
 import "aos/dist/aos.css";
 import { useNavigate, Link } from "react-router-dom";
+import { CarHoverButtons } from "./CarHoverButtons";
 
 export const CarItem = ({ car, brandPage, index }) => {
   const { theme } = useSelector((state) => state.theme);
@@ -26,6 +27,7 @@ export const CarItem = ({ car, brandPage, index }) => {
     "Híbrido",
     "Gas natural (CNG)",
   ];
+  const [hoverCar, setHoverCar] = useState(false);
 
   useEffect(() => {
     Aos.init({ once: true });
@@ -43,6 +45,8 @@ export const CarItem = ({ car, brandPage, index }) => {
       {car.carData && car.carTags && (
         <Link to={`/coches-segunda-mano/${car.uid}`}>
           <Box
+            onMouseEnter={() => setHoverCar(true)}
+            onMouseLeave={() => setHoverCar(false)}
             onClick={() => handleSelectCar()}
             className={
               indexesAnimated.includes(index) &&
@@ -65,24 +69,32 @@ export const CarItem = ({ car, brandPage, index }) => {
               },
             }}
           >
-            <IconButton
+            <Stack
               sx={{
                 position: "absolute",
-                top: 15,
+                top: 7.5,
                 right: 15,
-                borderRadius: 2,
-                "&:hover": { svg: { color: "primary.main" } },
               }}
             >
-              <Link to={`/`}>
-                <StarBorderIcon
+              <Tooltip title="Favoritos">
+                <IconButton
                   sx={{
-                    color: "#7c7c7ced",
+                    borderRadius: 2,
+                    "&:hover": { svg: { color: "primary.main" } },
                   }}
-                />
-              </Link>
-            </IconButton>
-
+                >
+                  <Link to={`/`}>
+                    <StarBorderIcon
+                      fontSize="small"
+                      sx={{
+                        color: "#7c7c7ced",
+                      }}
+                    />
+                  </Link>
+                </IconButton>
+              </Tooltip>
+              <CarHoverButtons hoverCar={hoverCar} />
+            </Stack>
             <Box
               sx={{
                 minWidth: "23%",
@@ -116,7 +128,12 @@ export const CarItem = ({ car, brandPage, index }) => {
               >
                 Precio: <span>{format(car.price, { code: "EUR" })}</span>
               </Typography>
-              <Typography variant="h5" noWrap gutterBottom>
+              <Typography
+                variant="h5"
+                noWrap
+                gutterBottom
+                sx={{ width: hoverCar ? "95%" : "100%" }}
+              >
                 {car.title}
               </Typography>
               <Stack
@@ -124,6 +141,7 @@ export const CarItem = ({ car, brandPage, index }) => {
                 spacing={3}
                 mt={2}
                 className="scrollingCarousel"
+                sx={{ width: hoverCar ? "94%" : "100%" }}
               >
                 <Stack direction="row">
                   <Typography variant="h7" fontWeight={300} noWrap>

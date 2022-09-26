@@ -20,6 +20,11 @@ export * from "./CarsViewModule";
 export * from "./CarItemVertical";
 export * from "./NavMenuIcons";
 export * from "./ProfileMenu";
+export * from "./CarHoverButtons";
+export * from "./SelectedCarImages";
+export * from "./CarDataWrapper";
+export * from "./CarChat";
+export * from "./CarData";
 
 //SLIDERS
 export * from "./Filters/KilometersSlider";

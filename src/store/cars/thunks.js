@@ -9,7 +9,6 @@ export const importCars = (
   filterQuery
 ) => {
   return async (dispatch) => {
-    console.log(filterQuery);
     dispatch(setLoading());
     const data = await fetchCars(page, limit, brand, orderBy, filterQuery);
     dispatch(setCars(data));
