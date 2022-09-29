@@ -27,7 +27,7 @@ export const SelectedCarImages = () => {
   return (
     <Carousel
       data={data}
-      time={10000}
+      time={2000}
       width={"100%"}
       height={"60vh"}
       captionStyle={captionStyle}

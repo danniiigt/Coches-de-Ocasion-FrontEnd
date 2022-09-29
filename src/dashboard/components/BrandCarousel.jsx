@@ -3,11 +3,18 @@ import { Box, Button } from "@mui/material";
 import { useFetch } from "../../hooks/useFetch";
 import { Link } from "react-router-dom";
 import { BrandCarouselSkeleton } from "./";
+import { useDispatch } from "react-redux";
+import { setFilterQuery } from "../../store/cars";
 
 export const BrandCarousel = ({ fullWidth }) => {
+  const dispatch = useDispatch();
   const { data, isLoading, hasError } = useFetch(
     `${import.meta.env.VITE_RESTSERVER_URL}/api/brands`
   );
+
+  const handleSetBrand = (brand) => {
+    dispatch(setFilterQuery({ brands: [brand] }));
+  };
 
   return (
     <Box
@@ -45,7 +52,12 @@ export const BrandCarousel = ({ fullWidth }) => {
                 },
               }}
             >
-              <Link to={`/${brand}`}>{brand}</Link>
+              <Link
+                onClick={() => handleSetBrand(brand)}
+                to={`/coches-segunda-mano`}
+              >
+                {brand}
+              </Link>
             </Button>
           ))}
       </ScrollingCarousel>

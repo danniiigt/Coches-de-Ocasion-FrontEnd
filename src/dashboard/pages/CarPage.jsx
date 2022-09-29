@@ -7,13 +7,17 @@ import {
   CarData,
 } from "../components";
 import { useLocation } from "react-router-dom";
-import { setSelectedCar } from "../../store/cars";
+import { setLoadingSelectedCar, setSelectedCar } from "../../store/cars";
 
 export const CarPage = () => {
   const { selectedCar: car } = useSelector((state) => state.cars);
   const dispatch = useDispatch();
   const location = useLocation();
   const carId = location.pathname.split("/")[2];
+
+  window.scrollTo({
+    top: 0,
+  });
 
   const fetchCar = async () => {
     if (car) return;

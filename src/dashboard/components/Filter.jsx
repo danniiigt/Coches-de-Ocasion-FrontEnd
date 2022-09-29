@@ -32,6 +32,7 @@ export const Filter = () => {
 
   const handleSubmitChanges = () => {
     if (Object.keys(notAppliedFilterQuery).length > 0) {
+      console.log(notAppliedFilterQuery);
       dispatch(setFilterQuery(notAppliedFilterQuery));
       dispatch(setPage(1));
 

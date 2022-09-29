@@ -50,6 +50,10 @@ a {
   text-decoration: none;
 }
 
+a.breadcumbs:hover {
+  text-decoration: underline;
+}
+
 li {
   list-style: none;
 }

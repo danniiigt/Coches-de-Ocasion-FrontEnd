@@ -2,9 +2,11 @@ import { Box, Breadcrumbs, Paper, Typography } from "@mui/material";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { CarChat } from "./";
+import styled from "@emotion/styled";
 
 export const CarDataWrapper = ({ children }) => {
   const { selectedCar } = useSelector((state) => state.cars);
+  const { theme } = useSelector((state) => state.theme);
 
   return (
     <>
@@ -20,10 +22,14 @@ export const CarDataWrapper = ({ children }) => {
         }}
       >
         <Breadcrumbs aria-label="breadcrumb">
-          <Link underline="hover" color="inherit" to="/">
+          <Link className="breadcumbs" color="inherit" to="/">
             Coches de Ocasión
           </Link>
-          <Link underline="hover" color="inherit" to="/coches-segunda-mano">
+          <Link
+            className="breadcumbs"
+            color="inherit"
+            to="/coches-segunda-mano"
+          >
             Anuncios
           </Link>
           <Typography color="text.primary">{selectedCar.title}</Typography>
@@ -38,12 +44,14 @@ export const CarDataWrapper = ({ children }) => {
           marginLeft: "auto",
           marginRight: "auto",
           justifyContent: "space-between",
+          mb: 3,
         }}
       >
         <Paper
+          elevation={2}
           sx={{
-            width: "73%",
-            backgroundColor: "white",
+            width: "77%",
+            backgroundColor: theme.bgSecondary,
             boxSizing: "border-box",
             p: 3,
           }}
@@ -52,7 +60,7 @@ export const CarDataWrapper = ({ children }) => {
         </Paper>
         <Box
           sx={{
-            width: "25%",
+            width: "21%",
             maxHeight: 647,
             height: "fit-content",
             position: "sticky",
