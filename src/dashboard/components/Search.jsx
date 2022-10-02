@@ -1,4 +1,11 @@
-import { IconButton, MenuItem, Select, Stack, TextField } from "@mui/material";
+import {
+  IconButton,
+  MenuItem,
+  Select,
+  Stack,
+  TextField,
+  Tooltip,
+} from "@mui/material";
 import React, { useState } from "react";
 import { SearchWrapper } from "./SearchWrapper";
 import FilterListIcon from "@mui/icons-material/FilterList";
@@ -79,6 +86,7 @@ export const Search = () => {
             <Select
               value={brand}
               sx={{
+                display: { xs: "none", md: "inline-flex" },
                 backgroundColor: "white",
                 width: "45%",
                 borderRadius: 0,
@@ -116,7 +124,9 @@ export const Search = () => {
                 },
               }}
             >
-              <FilterListIcon color="primary" />
+              <Tooltip title="Filtros">
+                <FilterListIcon color="primary" />
+              </Tooltip>
             </IconButton>
             <IconButton
               onClick={handleSearch}
@@ -135,7 +145,9 @@ export const Search = () => {
                 },
               }}
             >
-              <SearchIcon color="primary" />
+              <Tooltip title="Buscar">
+                <SearchIcon color="primary" />
+              </Tooltip>
             </IconButton>
           </Stack>
         </form>

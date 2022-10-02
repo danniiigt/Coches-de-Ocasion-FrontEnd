@@ -9,12 +9,17 @@ export const SellCar = () => {
   const { theme } = useSelector((state) => state.theme);
 
   useEffect(() => {
-    Aos.init({ once: true });
+    Aos.init({ once: true, duration: 1000 });
   }, []);
 
   return (
-    <Grid container justifyContent="space-between" data-aos="fade-right">
-      <Grid item sm={6.5}>
+    <Grid
+      container
+      justifyContent="space-between"
+      data-aos="fade-right"
+      sx={{ mb: { xs: 6, xl: 0 } }}
+    >
+      <Grid item sm={12} md={6.5}>
         <Typography variant="h3" sx={{ color: theme.textPrimary }}>
           Le ayudamos a vender su coche
         </Typography>
@@ -42,7 +47,8 @@ export const SellCar = () => {
       </Grid>
       <Grid
         item
-        sm={5.5}
+        sm={12}
+        md={5.5}
         sx={{
           display: "flex",
           justifyContent: "flex-end",

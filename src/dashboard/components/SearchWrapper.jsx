@@ -1,6 +1,6 @@
 import { Box, Typography } from "@mui/material";
 import { Stack } from "@mui/system";
-import React from "react";
+import { useState } from "react";
 import backSearch from "../../assets/backSearch.png";
 import backSearchDark from "../../assets/backSearchDark.png";
 import happyCar from "../../assets/happyCar.png";
@@ -11,6 +11,13 @@ import { useSelector } from "react-redux";
 
 export const SearchWrapper = ({ children }) => {
   const { type } = useSelector((state) => state.theme);
+  const [showScroll, setShowScroll] = useState(true);
+
+  window.addEventListener("scroll", (e) => {
+    if (showScroll) {
+      setShowScroll(false);
+    }
+  });
 
   return (
     <Box
@@ -39,7 +46,9 @@ export const SearchWrapper = ({ children }) => {
           color="white"
           variant="h2"
           fontWeight={500}
+          // noWrap
           sx={{
+            fontSize: { md: "3.5rem", sm: "2.75rem", xs: "2rem" },
             span: {
               textDecoration: "underline 3px #F5E663",
             },
@@ -52,18 +61,32 @@ export const SearchWrapper = ({ children }) => {
           variant="body1"
           fontSize={22}
           fontWeight={200}
+          // noWrap
+          sx={{
+            fontSize: { md: "1.5rem", sm: "1.25rem", xs: "1rem" },
+          }}
         >
           Filtra por marca, modelo, kilometros, precio, potencia...
         </Typography>
         <Stack direction="row" sx={{ justifyContent: "space-between" }}>
-          <Stack spacing={1} mt={6} mb={16}>
+          <Stack
+            spacing={1}
+            mt={6}
+            mb={{ xs: 16, lg: 12, xl: 16, md: 12, sm: 16 }}
+          >
             <Stack
               direction="row"
               spacing={1.5}
               className="animate__animated animate__fadeIn animate__delay-1s"
             >
               <DirectionsCarIcon fontSize="small" color="secondary" />
-              <Typography color="#ecececed">
+              <Typography
+                color="#ecececed"
+                noWrap
+                sx={{
+                  fontSize: { md: "1.1rem", md: "1rem", sm: "0.85rem" },
+                }}
+              >
                 Más de 128.000 coches registrados
               </Typography>
             </Stack>
@@ -73,7 +96,13 @@ export const SearchWrapper = ({ children }) => {
               className="animate__animated animate__fadeIn animate__delay-2s"
             >
               <SellIcon fontSize="small" color="secondary" />
-              <Typography color="#ecececed">
+              <Typography
+                color="#ecececed"
+                noWrap
+                sx={{
+                  fontSize: { md: "1.1rem", md: "1rem", sm: "0.85rem" },
+                }}
+              >
                 Más de 2.000 coches vendidos en el ultimo mes
               </Typography>
             </Stack>
@@ -87,7 +116,13 @@ export const SearchWrapper = ({ children }) => {
                 color="secondary"
                 className="animate__animated animate__heartBeat animate__delay-4s"
               />
-              <Typography color="#ecececed">
+              <Typography
+                color="#ecececed"
+                noWrap
+                sx={{
+                  fontSize: { md: "1.1rem", md: "1rem", sm: "0.85rem" },
+                }}
+              >
                 Más de 50.000 Clientes satisfechos
               </Typography>
             </Stack>
@@ -95,6 +130,7 @@ export const SearchWrapper = ({ children }) => {
 
           <Box
             sx={{
+              display: { xs: "none", lg: "block" },
               mr: 4,
               mt: -14,
               img: {
@@ -108,20 +144,22 @@ export const SearchWrapper = ({ children }) => {
         </Stack>
         {children}
       </Box>
-      <Box
-        className="animate__animated animate__fadeIn animate__delay-4s"
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          mt: 10,
-          img: { width: 60, height: 60, objectFit: "contain" },
-        }}
-      >
-        <img
-          src="https://recruitinginmotion.com/wp-content/uploads/2018/02/scrolldown.gif"
-          alt=""
-        />
-      </Box>
+      {showScroll && (
+        <Box
+          className="animate__animated animate__fadeIn animate__delay-4s"
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            mt: 10,
+            img: { width: 60, height: 60, objectFit: "contain" },
+          }}
+        >
+          <img
+            src="https://recruitinginmotion.com/wp-content/uploads/2018/02/scrolldown.gif"
+            alt=""
+          />
+        </Box>
+      )}
     </Box>
   );
 };
