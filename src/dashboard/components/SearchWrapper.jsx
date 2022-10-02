@@ -18,13 +18,13 @@ export const SearchWrapper = ({ children }) => {
         backgroundImage:
           type === "dark" ? `url(${backSearchDark})` : `url(${backSearch})`,
         backgroundSize: "cover",
-        backgroundPosition: " 0 -240px ",
+        backgroundPosition: "0 -200px ",
         backgroundRepeat: "no-repeat",
         height: "640px",
         position: "absolute",
         top: 0,
         width: "100%",
-        paddingTop: 26,
+        paddingTop: 31,
       }}
     >
       <Box
@@ -107,6 +107,20 @@ export const SearchWrapper = ({ children }) => {
           </Box>
         </Stack>
         {children}
+      </Box>
+      <Box
+        className="animate__animated animate__fadeIn animate__delay-4s"
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          mt: 10,
+          img: { width: 60, height: 60, objectFit: "contain" },
+        }}
+      >
+        <img
+          src="https://recruitinginmotion.com/wp-content/uploads/2018/02/scrolldown.gif"
+          alt=""
+        />
       </Box>
     </Box>
   );

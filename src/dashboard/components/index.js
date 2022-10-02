@@ -25,6 +25,7 @@ export * from "./SelectedCarImages";
 export * from "./CarDataWrapper";
 export * from "./CarChat";
 export * from "./CarData";
+export * from "./HomePageData";
 
 //SLIDERS
 export * from "./Filters/KilometersSlider";
@@ -36,3 +37,9 @@ export * from "./Filters/HorsepowerSelect";
 export * from "./Filters/BrandSelect";
 export * from "./Filters/SearchBox";
 export * from "./Filters/OrderBy";
+
+//Home Page Data
+export * from "./HomePageData/SellCar";
+export * from "./HomePageData/BuyCar";
+export * from "./HomePageData/CarCities";
+export * from "./HomePageData/Footer";

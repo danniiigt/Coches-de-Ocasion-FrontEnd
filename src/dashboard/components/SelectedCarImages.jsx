@@ -6,12 +6,17 @@ import { useSelector } from "react-redux";
 export const SelectedCarImages = () => {
   const { selectedCar } = useSelector((state) => state.cars);
 
+  useEffect(() => {
+    data = [];
+  }, []);
+
   let data = [];
 
   for (const image of selectedCar.images) {
     let imageObj = { image: image };
     data.push(imageObj);
   }
+  console.log(data);
 
   const captionStyle = {
     fontSize: "2em",
@@ -21,8 +26,6 @@ export const SelectedCarImages = () => {
     fontSize: "20px",
     fontWeight: "bold",
   };
-
-  useEffect(() => {}, [data]);
 
   return (
     <Carousel

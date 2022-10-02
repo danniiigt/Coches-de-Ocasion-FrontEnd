@@ -49,6 +49,8 @@ export const themeSlice = createSlice({
     setDarkMode: (state, action) => {
       state.type = "dark";
       state.theme = {
+        // bgPrimary: "#10151e",
+        // bgSecondary: "#2d333b",
         bgPrimary: "#0c0c0c",
         bgSecondary: "#1c1c1c",
         borderColor: "#363636",
