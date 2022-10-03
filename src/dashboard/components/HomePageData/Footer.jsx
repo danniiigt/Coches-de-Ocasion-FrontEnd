@@ -8,7 +8,7 @@ export const Footer = () => {
       textAlign="center"
       sx={{ mt: 5, span: { textDecoration: "underline" } }}
     >
-      Copyright © <span>Coches de Ocasión</span> 2022.
+      Copyright © <span>Coches de Ocasión</span> 2022. @danniiigt
     </Typography>
   );
 };

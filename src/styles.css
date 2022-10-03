@@ -54,6 +54,10 @@ a.breadcumbs:hover {
   text-decoration: underline;
 }
 
+body {
+  overflow-x: hidden;
+}
+
 li {
   list-style: none;
 }

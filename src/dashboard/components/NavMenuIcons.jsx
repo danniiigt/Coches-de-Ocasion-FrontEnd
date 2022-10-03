@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import { ProfileMenu } from "./";
 import { useAuthStore } from "../../hooks/useAuthStore";
 import MenuIcon from "@mui/icons-material/Menu";
+import { resetFilterQuery } from "../../store/cars";
 
 export const NavMenuIcons = ({ showCarsButton }) => {
   const { type } = useSelector((state) => state.theme);
@@ -70,7 +71,10 @@ export const NavMenuIcons = ({ showCarsButton }) => {
         <ProfileMenu />
 
         {showCarsButton && (
-          <Link to="/coches-segunda-mano">
+          <Link
+            to="/coches-segunda-mano"
+            onClick={() => dispatch(resetFilterQuery())}
+          >
             <Button
               color="secondary"
               variant="contained"

@@ -3,10 +3,14 @@ import { useSelector } from "react-redux";
 import LocalOfferOutlinedIcon from "@mui/icons-material/LocalOfferOutlined";
 import DirectionsCarFilledOutlinedIcon from "@mui/icons-material/DirectionsCarFilledOutlined";
 import WorkspacePremiumOutlinedIcon from "@mui/icons-material/WorkspacePremiumOutlined";
-import { useEffect } from "react";
+import { Link } from "react-router-dom";
+import { useCarsCollections } from "../../../hooks/";
 
 export const CarCities = () => {
   const { theme } = useSelector((state) => state.theme);
+
+  const { cheapCarsCollection, km0CarsCollection, premiumCarsCollection } =
+    useCarsCollections();
 
   return (
     <Box sx={{ width: "100%", backgroundColor: theme.bgSecondary }}>
@@ -44,10 +48,12 @@ export const CarCities = () => {
                 <LocalOfferOutlinedIcon fontSize="large" />
               </Box>
               <Box>
-                <Typography variant="body1">Coches</Typography>
-                <Typography variant="body1" color="primary" fontWeight={500}>
-                  Económicos
-                </Typography>
+                <Link to="/coches-segunda-mano" onClick={cheapCarsCollection}>
+                  <Typography variant="body1">Coches</Typography>
+                  <Typography variant="body1" color="primary" fontWeight={500}>
+                    Económicos
+                  </Typography>
+                </Link>
               </Box>
             </Box>
           </Grid>
@@ -71,10 +77,12 @@ export const CarCities = () => {
                 <DirectionsCarFilledOutlinedIcon fontSize="large" />
               </Box>
               <Box>
-                <Typography variant="body1">Coches</Typography>
-                <Typography variant="body1" color="primary" fontWeight={500}>
-                  Kilómetro 0
-                </Typography>
+                <Link to="/coches-segunda-mano" onClick={km0CarsCollection}>
+                  <Typography variant="body1">Coches</Typography>
+                  <Typography variant="body1" color="primary" fontWeight={500}>
+                    Kilómetro 0
+                  </Typography>
+                </Link>
               </Box>
             </Box>
           </Grid>
@@ -98,10 +106,12 @@ export const CarCities = () => {
                 <WorkspacePremiumOutlinedIcon fontSize="large" />
               </Box>
               <Box>
-                <Typography variant="body1">Coches</Typography>
-                <Typography variant="body1" color="primary" fontWeight={500}>
-                  Premium
-                </Typography>
+                <Link to="/coches-segunda-mano" onClick={premiumCarsCollection}>
+                  <Typography variant="body1">Coches</Typography>
+                  <Typography variant="body1" color="primary" fontWeight={500}>
+                    Premium
+                  </Typography>
+                </Link>
               </Box>
             </Box>
           </Grid>

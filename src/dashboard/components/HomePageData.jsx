@@ -1,16 +1,17 @@
-import { Box, Divider, Stack } from "@mui/material";
+import { Box, Divider, Stack, useMediaQuery } from "@mui/material";
 import { useSelector } from "react-redux";
-import { SellCar, BuyCar, CarCities, Footer } from "./";
+import { SellCar, BuyCar, CarCities, Footer, OurCars } from "./";
 
 export const HomePageData = () => {
   const { theme } = useSelector((state) => state.theme);
+  const matches = useMediaQuery("(max-width: 667px)");
 
   return (
     <Box
       sx={{
         width: "100%",
         position: "absolute",
-        top: 820,
+        top: matches ? 650 : { lg: 820, xs: 750 },
         pb: 5,
       }}
     >
@@ -25,6 +26,8 @@ export const HomePageData = () => {
         <SellCar />
         <Divider />
         <BuyCar />
+        <Divider />
+        <OurCars />
       </Box>
       <CarCities />
       <Footer />

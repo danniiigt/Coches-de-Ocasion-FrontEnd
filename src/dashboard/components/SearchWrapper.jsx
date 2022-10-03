@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, useMediaQuery } from "@mui/material";
 import { Stack } from "@mui/system";
 import { useState } from "react";
 import backSearch from "../../assets/backSearch.png";
@@ -12,6 +12,7 @@ import { useSelector } from "react-redux";
 export const SearchWrapper = ({ children }) => {
   const { type } = useSelector((state) => state.theme);
   const [showScroll, setShowScroll] = useState(true);
+  const matches = useMediaQuery("(max-width: 667px)");
 
   window.addEventListener("scroll", (e) => {
     if (showScroll) {
@@ -31,7 +32,7 @@ export const SearchWrapper = ({ children }) => {
         position: "absolute",
         top: 0,
         width: "100%",
-        paddingTop: 31,
+        paddingTop: matches ? 23 : 31,
       }}
     >
       <Box
@@ -48,7 +49,7 @@ export const SearchWrapper = ({ children }) => {
           fontWeight={500}
           // noWrap
           sx={{
-            fontSize: { md: "3.5rem", sm: "2.75rem", xs: "2rem" },
+            fontSize: { md: "3.5rem", sm: "2.75rem", xs: "2.5rem" },
             span: {
               textDecoration: "underline 3px #F5E663",
             },
@@ -72,7 +73,7 @@ export const SearchWrapper = ({ children }) => {
           <Stack
             spacing={1}
             mt={6}
-            mb={{ xs: 16, lg: 12, xl: 16, md: 12, sm: 16 }}
+            mb={matches ? 9 : { xs: 16, lg: 12, xl: 16, md: 12, sm: 16 }}
           >
             <Stack
               direction="row"
@@ -81,6 +82,7 @@ export const SearchWrapper = ({ children }) => {
             >
               <DirectionsCarIcon fontSize="small" color="secondary" />
               <Typography
+                variant="body2"
                 color="#ecececed"
                 noWrap
                 sx={{
@@ -97,6 +99,7 @@ export const SearchWrapper = ({ children }) => {
             >
               <SellIcon fontSize="small" color="secondary" />
               <Typography
+                variant="body2"
                 color="#ecececed"
                 noWrap
                 sx={{
@@ -117,6 +120,7 @@ export const SearchWrapper = ({ children }) => {
                 className="animate__animated animate__heartBeat animate__delay-4s"
               />
               <Typography
+                variant="body2"
                 color="#ecececed"
                 noWrap
                 sx={{
@@ -144,7 +148,7 @@ export const SearchWrapper = ({ children }) => {
         </Stack>
         {children}
       </Box>
-      {showScroll && (
+      {showScroll && !matches && (
         <Box
           className="animate__animated animate__fadeIn animate__delay-4s"
           sx={{

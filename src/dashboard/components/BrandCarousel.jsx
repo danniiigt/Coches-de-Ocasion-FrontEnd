@@ -4,7 +4,7 @@ import { useFetch } from "../../hooks/useFetch";
 import { Link } from "react-router-dom";
 import { BrandCarouselSkeleton } from "./";
 import { useDispatch } from "react-redux";
-import { setFilterQuery } from "../../store/cars";
+import { resetFilterQuery, setFilterQuery } from "../../store/cars";
 
 export const BrandCarousel = ({ fullWidth }) => {
   const dispatch = useDispatch();
@@ -13,6 +13,7 @@ export const BrandCarousel = ({ fullWidth }) => {
   );
 
   const handleSetBrand = (brand) => {
+    dispatch(resetFilterQuery());
     dispatch(setFilterQuery({ brands: [brand] }));
   };
 

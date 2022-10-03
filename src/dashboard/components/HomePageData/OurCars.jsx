@@ -1,12 +1,16 @@
 import { Box, Button, Grid, Stack, Typography } from "@mui/material";
 import DoneAllIcon from "@mui/icons-material/DoneAll";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Aos from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
+import hyundaiCars from "../../../assets/hyundaiCars.png";
+import { Link } from "react-router-dom";
+import { resetFilterQuery } from "../../../store/cars";
 
-export const SellCar = () => {
+export const OurCars = () => {
   const { theme } = useSelector((state) => state.theme);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     Aos.init({ once: true, duration: 1000 });
@@ -17,7 +21,7 @@ export const SellCar = () => {
       container
       justifyContent="space-between"
       data-aos="fade-right"
-      sx={{ mb: { xs: 6, xl: 0 } }}
+      sx={{ mb: { xs: 6, xl: 0 }, mt: 10 }}
     >
       <Grid item sm={12} md={6.5} mb={6}>
         <Typography
@@ -27,25 +31,24 @@ export const SellCar = () => {
             textAlign: { xs: "center", md: "inherit" },
           }}
         >
-          Le ayudamos a vender su coche
+          Acerca de nuestros coches
         </Typography>
-        <Stack
-          spacing={1}
-          mt={5}
-          mb={4}
-          sx={{
-            color: theme.textPrimary,
-          }}
-        >
+        <Stack spacing={1} mt={5} mb={4} sx={{ color: theme.textPrimary }}>
           <Stack
             direction="row"
             spacing={1.5}
             sx={{ justifyContent: { xs: "center", md: "inherit" } }}
           >
             <DoneAllIcon fontSize="small" color="primary" />
-            <Typography color="inherit">
-              Nos encargamos de todos los trámites
-            </Typography>
+            <Typography color="inherit">Limpieza a fondo</Typography>
+          </Stack>
+          <Stack
+            direction="row"
+            spacing={1.5}
+            sx={{ justifyContent: { xs: "center", md: "inherit" } }}
+          >
+            <DoneAllIcon fontSize="small" color="primary" />
+            <Typography color="inherit">Libre de cargas</Typography>
           </Stack>
           <Stack
             direction="row"
@@ -54,7 +57,7 @@ export const SellCar = () => {
           >
             <DoneAllIcon fontSize="small" color="primary" />
             <Typography color="inherit">
-              Reportaje Fotográfico Profesional
+              Certificación de kilometraje
             </Typography>
           </Stack>
           <Stack
@@ -63,9 +66,7 @@ export const SellCar = () => {
             sx={{ justifyContent: { xs: "center", md: "inherit" } }}
           >
             <DoneAllIcon fontSize="small" color="primary" />
-            <Typography color="inherit">
-              Publicación en los principales portales
-            </Typography>
+            <Typography color="inherit">Revisiones a fondo</Typography>
           </Stack>
         </Stack>
         <Box
@@ -74,7 +75,12 @@ export const SellCar = () => {
             justifyContent: { xs: "center", md: "flex-start" },
           }}
         >
-          <Button variant="outlined">PUBLICAR COCHE</Button>
+          <Link
+            to="/coches-segunda-mano"
+            onClick={() => dispatch(resetFilterQuery())}
+          >
+            <Button variant="outlined">VER COCHES</Button>
+          </Link>
         </Box>
       </Grid>
       <Grid
@@ -91,7 +97,7 @@ export const SellCar = () => {
           },
         }}
       >
-        <img src="https://www.flexicar.es/_next/image/?url=https%3A%2F%2Fwww.flexicar.es%2Fimages%2Fpublic%2Fhighlight-1_temp.png&w=640&q=75" />
+        <img src={hyundaiCars} />
       </Grid>
     </Grid>
   );
