@@ -5,13 +5,13 @@
 ## Tabla de contenidos:
 
 - [Demo](#demo)
-- [Acerca del Proyecto](#acerca-del-proyecto-📚)
-- [Proyectos Implicados](#proyectos-implicados-🔗)
-- [Tecnologías Usadas](#tecnologías-usadas-☕️-🐍-⚛️)
-- [Setup / Instalación](#setup--instalación-💻)
-- [Status](#status-📶)
+- [Acerca del Proyecto](#acerca-del-proyecto-)
+- [Proyectos Implicados](#proyectos-implicados-)
+- [Tecnologías Usadas](#tecnologías-usadas-%EF%B8%8F--%EF%B8%8F)
+- [Setup / Instalación](#setup--instalación-)
+- [Status](#status-)
 - [Imágenes](#imágenes)
-- [Licencia](#licencia-©️)
+- [Licencia](#licencia-%EF%B8%8F)
 
 ## Demo
 
